@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: #05060a;
+    color: #e9ecf5;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Slightly nicer default selection */
+  ::selection {
+    background: rgba(232, 195, 126, 0.25);
+    color: #fff;
+  }
+
+  /* Custom, unobtrusive scrollbar for the deep-dive panel */
+  .scroll-fade {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(232, 195, 126, 0.35) transparent;
+  }
+  .scroll-fade::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scroll-fade::-webkit-scrollbar-thumb {
+    background: rgba(232, 195, 126, 0.25);
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  /* Cinematic, frosted glass panel */
+  .glass {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.02)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Letter-spaced uppercase kicker text */
+  .kicker {
+    font-family: 'Space Grotesk', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+
+  /* Gold gradient text */
+  .text-gradient-gold {
+    background: linear-gradient(180deg, #f8edd2 0%, #e8c37e 55%, #c79a55 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* ----------------------------------------------------------------- */
+/*  Cinematic atmosphere: film grain + vignette overlays              */
+/* ----------------------------------------------------------------- */
+
+/* A fine film grain that sits above everything but ignores pointer events */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 0.6s steps(2) infinite;
+}
+
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-4px, 3px); }
+  100% { transform: translate(2px, -2px); }
+}
+
+/* Soft cinematic vignette around the edges of the viewport */
+.vignette::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 100% at 50% 40%,
+    transparent 55%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
