@@ -34,14 +34,13 @@ export default function FactView({ category, fact, onBack, backLabel = 'Choose a
         <Figure category={category} fact={fact} kenburns className="h-full w-full" />
       </motion.div>
 
-      {/* cinematic scrims for legibility */}
-      <motion.div
-        className="fixed inset-0 bg-gradient-to-t from-ink-900 via-ink-900/70 to-ink-900/10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, ease: EASE }}
-      />
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,transparent_40%,rgba(5,6,10,0.55)_100%)]" />
+      {/*
+        Legibility is handled inside <Figure> now: the darkening shader is baked
+        into the shared-layout element, so it is already applied while the fact is
+        presented and morphs in with the hero — rather than fading in over the
+        photo after the fact is opened. (Edge framing comes from the global
+        .vignette in index.css.)
+      */}
 
       {/* content */}
       <div className="relative mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-between px-5 py-8 sm:px-8 sm:py-10">

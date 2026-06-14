@@ -41,8 +41,21 @@ export default function Figure({ category, fact, kenburns = false, className = '
         </div>
       )}
 
-      {/* soft cinematic top-light + bottom shadow */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.05] via-transparent to-black/30" />
+      {/* Legibility shader — baked into the figure itself.
+          Because <Figure> is the shared-layout element that morphs from the
+          option card into the full-bleed hero, applying the darkening here means
+          it is already in place while the fact is presented (the "fact making"
+          stage) and travels with the morph — instead of fading in over the photo
+          after the fact is opened. Bottom-weighted so the title/teaser stay
+          readable over bright photos, with a gentle top fade for the hero's top
+          bar; the middle stays clear so the image itself still reads. */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            'linear-gradient(to top, rgba(5,6,10,0.96) 0%, rgba(5,6,10,0.72) 18%, rgba(5,6,10,0.18) 42%, rgba(5,6,10,0.04) 60%, rgba(5,6,10,0) 82%, rgba(5,6,10,0.34) 100%)',
+        }}
+      />
     </div>
   )
 }

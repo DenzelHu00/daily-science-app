@@ -84,7 +84,7 @@ function AdminCard({ category, fact, onSelect }) {
         <Figure category={category} fact={fact} className="h-full w-full" />
       </motion.div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-transparent" />
+      {/* legibility scrim is provided by <Figure> itself */}
 
       {/* admin badge: photo vs procedural scene */}
       <span
