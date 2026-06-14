@@ -54,7 +54,7 @@ export default function OptionCard({ option, index, onSelect }) {
           className="absolute inset-0"
           transition={{ type: 'spring', stiffness: 170, damping: 26 }}
         >
-          <Figure category={category} scene={fact.scene} className="h-full w-full" />
+          <Figure category={category} fact={fact} className="h-full w-full" />
         </motion.div>
 
         {/* legibility scrim */}

@@ -15,13 +15,15 @@ day**: a short, vivid explanation paired with bespoke artwork. Curious? Hit
 - **Refreshes every day.** The trio of options is derived deterministically
   from the calendar date, so everyone sees the same set on a given day and it
   rotates automatically at local midnight — no backend required.
-- **A category band** above the options shows the full breadth of science,
-  with today's three featured fields glowing in their accent colours.
+- **Each option is labelled with its field** (astronomy, physics, biology…),
+  shown above the card and tinted in that field's accent colour.
 - **Cinematic transitions.** Choosing a door morphs the card seamlessly into a
   full-bleed hero (shared-layout animation), with a slow Ken Burns drift.
-- **Bespoke, always-relevant imagery.** Each fact is illustrated by a
-  procedural, animated SVG "scene" themed to its category — no external image
-  dependencies, so it always loads and stays visually cohesive.
+- **Real, on-topic photos.** Each fact is backed by a relevant, freely-licensed
+  photograph (an octopus, the Apollo bootprint, gallium crystals…), bundled
+  locally so it always loads. Abstract facts with no good photo fall back to a
+  bespoke, animated procedural SVG "scene" — so every card always looks
+  intentional. See [CREDITS.md](./CREDITS.md) for attribution.
 - **Read more.** A focused, scrollable deep-dive sheet with key points and a
   richer explanation.
 - **Considered details:** film grain, vignette, drifting nebula backdrop,
@@ -49,20 +51,25 @@ npm run preview  # preview the production build
 src/
 ├── App.jsx                 # state + shared-layout orchestration
 ├── index.css               # cinematic base: grain, vignette, glass, type
+├── assets/facts/           # bundled fact photographs (<factId>.jpg)
 ├── data/
 │   ├── categories.js       # the six science fields + their visual identity
-│   └── facts.js            # the fun-fact corpus (fact, key points, deep dive)
+│   ├── facts.js            # the fun-fact corpus (fact, key points, deep dive)
+│   ├── factImages.js       # maps facts to their bundled photo + credit
+│   └── imageCredits.json   # per-image attribution (author, license, source)
 ├── lib/
 │   └── daily.js            # deterministic "fact of the day" engine
 └── components/
     ├── Atmosphere.jsx      # drifting nebula + starfield backdrop
-    ├── CategoryBar.jsx     # the science-field band above the options
     ├── OptionsView.jsx     # masthead + the three doors
-    ├── OptionCard.jsx      # a single door (morph source)
+    ├── OptionCard.jsx      # a single door, labelled with its field (morph source)
     ├── FactView.jsx        # the revealed fact (morph target) + hero
     ├── ReadMore.jsx        # the deep-dive sheet
-    ├── Figure.jsx          # the cinematic image surface
+    ├── Figure.jsx          # the image surface (photo, or scene fallback)
     └── Scene.jsx           # the procedural, animated SVG artwork library
+
+scripts/
+└── fetch-images.mjs        # re-fetch fact photos from Wikimedia + credits
 ```
 
 ## Adding a fact
@@ -82,4 +89,19 @@ Append an entry to `src/data/facts.js`:
 }
 ```
 
-The daily engine picks it up automatically.
+The daily engine picks it up automatically. If `src/assets/facts/<id>.jpg`
+exists it's used as the background; otherwise the fact's `scene` is rendered.
+
+## Imagery
+
+Photos are fetched from Wikimedia Commons and bundled locally. To add or
+refresh them, edit the `MAP` in `scripts/fetch-images.mjs`, then:
+
+```bash
+node scripts/fetch-images.mjs            # fetch all
+node scripts/fetch-images.mjs bio-octopus med-cornea   # or specific facts
+```
+
+This downloads sized JPEGs into `src/assets/facts/` and records attribution in
+`src/data/imageCredits.json`. Regenerate [CREDITS.md](./CREDITS.md) after
+changes. Please respect each image's license (see CREDITS.md).

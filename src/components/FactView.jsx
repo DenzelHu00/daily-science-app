@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Figure from './Figure.jsx'
 import ReadMore from './ReadMore.jsx'
+import { getImageCredit } from '../data/factImages.js'
 
 const EASE = [0.22, 0.61, 0.36, 1]
 
@@ -12,6 +13,7 @@ const EASE = [0.22, 0.61, 0.36, 1]
  */
 export default function FactView({ category, fact, onBack }) {
   const [readMore, setReadMore] = useState(false)
+  const credit = getImageCredit(fact.id)
 
   useEffect(() => {
     const onKey = (e) => {
@@ -29,7 +31,7 @@ export default function FactView({ category, fact, onBack }) {
         className="fixed inset-0"
         transition={{ type: 'spring', stiffness: 170, damping: 26 }}
       >
-        <Figure category={category} scene={fact.scene} kenburns className="h-full w-full" />
+        <Figure category={category} fact={fact} kenburns className="h-full w-full" />
       </motion.div>
 
       {/* cinematic scrims for legibility */}
@@ -117,6 +119,13 @@ export default function FactView({ category, fact, onBack }) {
             </button>
             <span className="text-sm text-white/45">A deeper dive for the curious</span>
           </div>
+
+          {credit && (
+            <p className="mt-7 text-[11px] leading-tight text-white/30">
+              Photo: {credit.title.replace(/\.[a-z]+$/i, '')} — {credit.artist}
+              {credit.license ? `, ${credit.license}` : ''} · via Wikimedia Commons
+            </p>
+          )}
         </motion.article>
       </div>
 
