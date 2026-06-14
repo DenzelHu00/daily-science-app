@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
-import CategoryBar from './CategoryBar.jsx'
 import OptionCard from './OptionCard.jsx'
 
 const EASE = [0.22, 0.61, 0.36, 1]
 
 /**
- * OptionsView — the daily landing: the masthead, the category band, and the
- * three doors to choose from.
+ * OptionsView — the daily landing: the masthead and the three doors, each
+ * labelled with the science field it belongs to.
  */
 export default function OptionsView({ selection, onSelect }) {
   return (
@@ -39,18 +38,8 @@ export default function OptionsView({ selection, onSelect }) {
         </p>
       </motion.header>
 
-      {/* category band */}
-      <motion.div
-        className="mt-9"
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15, duration: 0.7, ease: EASE }}
-      >
-        <CategoryBar activeIds={selection.categories} />
-      </motion.div>
-
-      {/* the three doors */}
-      <div className="mt-10 grid flex-1 grid-cols-1 content-center gap-5 sm:mt-12 sm:grid-cols-3 sm:gap-6">
+      {/* the three doors, each labelled with its science field */}
+      <div className="mt-12 grid flex-1 grid-cols-1 content-center gap-x-6 gap-y-9 sm:mt-14 sm:grid-cols-3">
         {selection.options.map((option, i) => (
           <OptionCard key={option.fact.id} option={option} index={i} onSelect={onSelect} />
         ))}

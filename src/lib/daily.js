@@ -6,7 +6,7 @@
 // every visitor sees the same three options on the same day, and the set
 // rotates automatically at local midnight — no backend required.
 
-import { CATEGORY_ORDER } from '../data/categories.js'
+import { CATEGORY_ORDER, getCategory } from '../data/categories.js'
 import { FACTS_BY_CATEGORY } from '../data/facts.js'
 
 const NUM_OPTIONS = 3
@@ -68,10 +68,12 @@ export function getDailySelection(date = new Date()) {
   const chosenCategories = seededShuffle(CATEGORY_ORDER, rng).slice(0, NUM_OPTIONS)
 
   // For each chosen category, deterministically pick one fact for today.
-  const options = chosenCategories.map((category) => {
-    const pool = FACTS_BY_CATEGORY[category] || []
+  // `category` is resolved to the full object so cards get its label, glyph,
+  // accent colour and gradient directly.
+  const options = chosenCategories.map((catId) => {
+    const pool = FACTS_BY_CATEGORY[catId] || []
     const fact = pool[Math.floor(rng() * pool.length)]
-    return { category, fact }
+    return { category: getCategory(catId), fact }
   })
 
   // Shuffle the *display order* of the doors so the same category isn't
