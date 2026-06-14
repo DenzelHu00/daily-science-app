@@ -122,8 +122,10 @@ export default function FactView({ category, fact, onBack }) {
 
           {credit && (
             <p className="mt-7 text-[11px] leading-tight text-white/30">
-              Photo: {credit.title.replace(/\.[a-z]+$/i, '')} — {credit.artist}
-              {credit.license ? `, ${credit.license}` : ''} · via Wikimedia Commons
+              Photo: {credit.author || credit.artist || 'Unknown'}
+              {credit.license ? `, ${credit.license}` : ''}
+              {' · '}
+              {credit.sourceName || 'Wikimedia Commons'}
             </p>
           )}
         </motion.article>

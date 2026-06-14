@@ -1,9 +1,14 @@
-// Fetches a freely-licensed, on-topic photo for each fact from Wikimedia,
-// downloads a sized JPEG into src/assets/facts/<id>.jpg, and records
-// attribution into src/data/imageCredits.json.
+// Fetches an on-topic photo for each fact from Pixabay, downloads it into
+// src/assets/facts/<id>.jpg, and records attribution into imageCredits.json.
+//
+// Requires a free Pixabay API key (https://pixabay.com/api/docs/):
+//   export PIXABAY_API_KEY=xxxxxxxx
 //
 // Usage:  node scripts/fetch-images.mjs [factId ...]
-// (pass specific fact ids to refetch just those; omit to fetch all)
+//   (pass specific fact ids to refetch just those; omit to fetch all)
+//
+// Facts not listed in MAP — or whose search returns nothing suitable — have no
+// photo and fall back to the app's procedural <Scene>.
 
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -13,121 +18,75 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.join(__dirname, '..')
 const OUT_DIR = path.join(ROOT, 'src/assets/facts')
 const CREDITS = path.join(ROOT, 'src/data/imageCredits.json')
-const WIDTH = Number(process.env.IMG_WIDTH) || 1400
-const UA = { 'User-Agent': 'DailyScienceApp/1.0 (educational project; denzelhu@gmail.com)' }
+const MIN_WIDTH = 1200
+const KEY = process.env.PIXABAY_API_KEY
 
-// fact id -> source spec. { wiki } pulls an article's lead image; { file }
-// targets a specific Commons file; { search } takes the top Commons photo.
+// fact id -> Pixabay search query (tuned for a relevant, cinematic result).
 const MAP = {
   // astronomy
-  'astro-venus': { wiki: 'Venus' },
-  'astro-neutron': { wiki: 'Neutron star' },
-  'astro-stars-sand': { wiki: 'Milky Way' },
-  'astro-sun-mass': { wiki: 'Sun' },
-  'astro-footprints': { file: 'File:Apollo 11 bootprint.jpg' },
-  'astro-saturn-float': { wiki: 'Saturn' },
+  'astro-venus': 'venus planet',
+  'astro-neutron': 'nebula space',
+  'astro-stars-sand': 'milky way galaxy stars',
+  'astro-sun-mass': 'sun sky',
+  'astro-footprints': 'astronaut moon',
+  'astro-saturn-float': 'saturn planet',
   // physics
-  'phys-sunlight': { wiki: 'Crepuscular rays' },
-  'phys-photon': { wiki: 'Solar prominence' },
-  'phys-timehead': { wiki: 'NIST-F1' },
-  'phys-quantum-tunnel': { wiki: 'Scanning tunneling microscope' },
-  'phys-absolute-zero': { wiki: 'Liquid nitrogen' },
-  'phys-superfluid': { wiki: 'Superfluidity' },
+  'phys-sunlight': 'sun rays sky',
+  'phys-photon': 'sun solar',
+  'phys-timehead': 'clock time',
+  'phys-quantum-tunnel': 'quantum physics abstract',
+  'phys-absolute-zero': 'frost ice blue',
+  'phys-superfluid': 'blue liquid splash',
   // biology
-  'bio-microbiome': { wiki: 'Escherichia coli' },
-  'bio-octopus': { wiki: 'Octopus' },
-  'bio-dna-length': { wiki: 'DNA' },
-  'bio-tardigrade': { wiki: 'Tardigrade' },
-  'bio-trees-network': { wiki: 'Forest' },
-  'bio-banana-dna': { wiki: 'Banana' },
+  'bio-microbiome': 'bacteria microbiology',
+  'bio-octopus': 'octopus',
+  'bio-dna-length': 'dna helix',
+  'bio-tardigrade': 'microscope organism',
+  'bio-trees-network': 'forest trees',
+  'bio-banana-dna': 'bananas',
   // chemistry
-  'chem-glass': { wiki: 'Glassblowing' },
-  'chem-carbon': { wiki: 'Diamond' },
-  'chem-ice-floats': { wiki: 'Iceberg' },
-  'chem-gallium': { wiki: 'Gallium' },
-  'chem-mpemba': { wiki: 'Ice' },
+  'chem-glass': 'molten glass blowing',
+  'chem-carbon': 'diamond',
+  'chem-ice-floats': 'iceberg',
+  'chem-gallium': 'liquid metal',
+  'chem-mpemba': 'ice cubes',
   // medicine
-  'med-stomach': { wiki: 'Stomach' },
-  'med-heartbeats': { wiki: 'Heart' },
-  'med-cornea': { wiki: 'Human eye' },
-  'med-bone': { wiki: 'Bone' },
-  'med-fever': { wiki: 'Thermometer' },
+  'med-stomach': 'stomach anatomy',
+  'med-heartbeats': 'human heart anatomy',
+  'med-cornea': 'human eye macro',
+  'med-bone': 'skeleton bones',
+  'med-fever': 'thermometer fever',
   // neuroscience
-  'neuro-energy': { wiki: 'Human brain' },
-  'neuro-speed': { wiki: 'Pyramidal cell' },
-  'neuro-gut': { wiki: 'Gastrointestinal tract' },
-  'neuro-memory': { wiki: 'Hippocampus' },
-  'neuro-tickle': { wiki: 'Tickling' },
+  'neuro-energy': 'human brain',
+  'neuro-speed': 'neuron nerve cells',
+  'neuro-gut': 'intestine anatomy',
+  'neuro-memory': 'brain mind abstract',
+  'neuro-tickle': 'feather',
 }
-
-const stripHtml = (s = '') =>
-  s.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-// fetch with polite backoff on rate-limiting / transient errors
 async function fetchRetry(url, tries = 5) {
   for (let i = 0; i < tries; i++) {
-    const r = await fetch(url, { headers: UA })
+    const r = await fetch(url, { headers: { 'User-Agent': 'DailyScienceApp/1.0' } })
     if (r.ok) return r
     if ((r.status === 429 || r.status >= 500) && i < tries - 1) {
-      await sleep(1500 * 2 ** i)
+      await sleep(2000 * 2 ** i)
       continue
     }
     throw new Error(`${r.status}`)
   }
 }
 
-async function jget(url) {
-  const r = await fetchRetry(url)
-  return r.json()
-}
-
-function fileTitleFromUploadUrl(url) {
-  // Works for both /commons/x/xx/Name.jpg and /commons/thumb/x/xx/Name.jpg/...px-Name.jpg
-  const m = url.match(/\/(?:commons|en)\/(?:thumb\/)?\w\/\w{2}\/([^/]+?\.\w{3,4})(?:\/|$)/i)
-  if (!m) return null
-  return 'File:' + decodeURIComponent(m[1])
-}
-
-async function resolveFileTitle(spec) {
-  if (spec.file) return spec.file
-  if (spec.search) {
-    const j = await jget(
-      `https://commons.wikimedia.org/w/api.php?action=query&format=json&list=search&srnamespace=6&srlimit=1&srsearch=${encodeURIComponent(
-        spec.search,
-      )}`,
-    )
-    return j?.query?.search?.[0]?.title || null
-  }
-  // spec.wiki -> article lead image
-  const s = await jget(
-    `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(spec.wiki)}`,
-  )
-  const src = s?.originalimage?.source || s?.thumbnail?.source
-  return src ? fileTitleFromUploadUrl(src) : null
-}
-
-async function imageInfo(title) {
-  const j = await jget(
-    `https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=${encodeURIComponent(
-      title,
-    )}&prop=imageinfo&iiprop=url|extmetadata|mime&iiurlwidth=${WIDTH}`,
-  )
-  const pages = j?.query?.pages || {}
-  const page = Object.values(pages)[0]
-  const info = page?.imageinfo?.[0]
-  if (!info) return null
-  const ex = info.extmetadata || {}
-  return {
-    thumburl: info.thumburl || info.url,
-    mime: info.mime,
-    artist: stripHtml(ex.Artist?.value) || 'Unknown',
-    license: stripHtml(ex.LicenseShortName?.value) || '',
-    licenseUrl: ex.LicenseUrl?.value || '',
-    descUrl: info.descriptionurl || `https://commons.wikimedia.org/wiki/${encodeURIComponent(title)}`,
-    title: title.replace(/^File:/, ''),
-  }
+async function search(query) {
+  const url =
+    `https://pixabay.com/api/?key=${KEY}` +
+    `&q=${encodeURIComponent(query)}` +
+    `&image_type=photo&orientation=horizontal&safesearch=true&order=popular&per_page=30`
+  const j = await (await fetchRetry(url)).json()
+  const hits = j.hits || []
+  // Prefer a sufficiently large image; otherwise take the most popular hit.
+  return hits.find((h) => h.imageWidth >= MIN_WIDTH) || hits[0] || null
 }
 
 async function download(url, dest) {
@@ -138,6 +97,10 @@ async function download(url, dest) {
 }
 
 async function main() {
+  if (!KEY) {
+    console.error('Missing PIXABAY_API_KEY. Get one at https://pixabay.com/api/docs/')
+    process.exit(1)
+  }
   await fs.mkdir(OUT_DIR, { recursive: true })
   const only = process.argv.slice(2)
   const ids = only.length ? only : Object.keys(MAP)
@@ -148,35 +111,29 @@ async function main() {
   } catch {}
 
   for (const id of ids) {
-    const spec = MAP[id]
-    if (!spec) {
+    const query = MAP[id]
+    if (!query) {
       console.log(`SKIP ${id} (no mapping)`)
       continue
     }
     try {
-      const title = await resolveFileTitle(spec)
-      if (!title) throw new Error('no file title resolved')
-      const info = await imageInfo(title)
-      if (!info?.thumburl) throw new Error('no thumburl')
-      if (info.mime && !/^image\/(jpeg|png|webp)/.test(info.mime)) {
-        // skip SVG/diagrams etc.
-        throw new Error('non-photo mime ' + info.mime)
-      }
-      const bytes = await download(info.thumburl, path.join(OUT_DIR, `${id}.jpg`))
+      const hit = await search(query)
+      if (!hit) throw new Error('no results')
+      const bytes = await download(hit.largeImageURL, path.join(OUT_DIR, `${id}.jpg`))
       credits[id] = {
-        title: info.title,
-        artist: info.artist,
-        license: info.license,
-        licenseUrl: info.licenseUrl,
-        source: info.descUrl,
+        author: hit.user,
+        sourceName: 'Pixabay',
+        sourceUrl: hit.pageURL,
+        license: 'Pixabay License',
+        query,
       }
       console.log(
-        `OK   ${id.padEnd(20)} ${(bytes / 1024).toFixed(0).padStart(4)}KB  ${info.title.slice(0, 42)}  [${info.license}]`,
+        `OK   ${id.padEnd(20)} ${(bytes / 1024).toFixed(0).padStart(4)}KB  ${hit.imageWidth}px  by ${hit.user}  («${query}»)`,
       )
     } catch (e) {
-      console.log(`FAIL ${id.padEnd(20)} ${e.message}`)
+      console.log(`FAIL ${id.padEnd(20)} ${e.message}  («${query}»)`)
     }
-    await sleep(500) // be polite to the API
+    await sleep(350) // be polite to the API
   }
 
   await fs.writeFile(CREDITS, JSON.stringify(credits, null, 2) + '\n')
