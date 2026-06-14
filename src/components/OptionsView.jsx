@@ -7,7 +7,7 @@ const EASE = [0.22, 0.61, 0.36, 1]
  * OptionsView — the daily landing: a minimal masthead, a headline, and three
  * joined panels — one per science field — that together form the "three doors."
  */
-export default function OptionsView({ selection, onSelect }) {
+export default function OptionsView({ selection, onSelect, revealedIds, onReveal }) {
   return (
     <motion.div
       key="options"
@@ -43,13 +43,16 @@ export default function OptionsView({ selection, onSelect }) {
         transition={{ delay: 0.07, duration: 0.6, ease: EASE }}
       >
         <h1
-          className="font-display text-[2.5rem] font-bold leading-none tracking-[-0.02em] sm:text-[3.4rem]"
-          style={{ color: 'var(--ink)' }}
+          className="font-display font-black leading-[0.95] tracking-[-0.02em]"
+          style={{
+            color: 'var(--ink)',
+            fontSize: 'clamp(3rem, 8vw, 5.5rem)',
+          }}
         >
           Three doors.
         </h1>
         <p
-          className="mt-3 max-w-xs text-sm leading-relaxed sm:text-base"
+          className="mt-4 max-w-xs text-sm font-light leading-relaxed sm:text-base"
           style={{ color: 'var(--ink-muted)' }}
         >
           One fact waits behind each field. Choose to reveal it.
@@ -59,7 +62,7 @@ export default function OptionsView({ selection, onSelect }) {
       {/* the three door panels — joined with a hair-thin separator */}
       <div
         className="grid min-h-[18rem] flex-1 grid-cols-1 overflow-hidden rounded-xl sm:min-h-0 sm:grid-cols-3"
-        style={{ gap: '1.5px', background: 'var(--border-subtle)' }}
+        style={{ gap: '2px', background: 'var(--border)' }}
       >
         {selection.options.map((option, i) => (
           <OptionCard
@@ -67,6 +70,8 @@ export default function OptionsView({ selection, onSelect }) {
             option={option}
             index={i}
             onSelect={onSelect}
+            initiallyRevealed={revealedIds?.has(option.fact.id)}
+            onReveal={onReveal}
           />
         ))}
       </div>

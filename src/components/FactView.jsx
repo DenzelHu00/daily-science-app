@@ -79,7 +79,7 @@ export default function FactView({ category, fact, onBack, backLabel = 'Choose a
             {category.label}
           </div>
 
-          <h1 className="font-display text-4xl font-bold leading-[1.06] tracking-[-0.02em] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.7)] sm:text-[3.8rem]">
+          <h1 className="font-display font-black leading-[1.0] tracking-[-0.025em] text-white drop-shadow-[0_2px_32px_rgba(0,0,0,0.8)]" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)' }}>
             {fact.title}
           </h1>
 

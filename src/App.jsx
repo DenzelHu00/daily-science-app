@@ -30,7 +30,12 @@ function syncAdminUrl(on) {
 export default function App() {
   const [selection, setSelection] = useState(() => getDailySelection())
   const [selectedId, setSelectedId] = useState(null)
+  const [revealedIds, setRevealedIds] = useState(() => new Set())
   const [admin, setAdmin] = useState(readAdmin)
+
+  const handleReveal = useCallback((id) => {
+    setRevealedIds((prev) => new Set([...prev, id]))
+  }, [])
 
   // Refresh the daily trio automatically when the local calendar day rolls
   // over while the app is left open.
@@ -88,7 +93,7 @@ export default function App() {
       ) : admin ? (
         <AdminView onSelect={setSelectedId} onExit={toggleAdmin} />
       ) : (
-        <OptionsView selection={selection} onSelect={setSelectedId} />
+        <OptionsView selection={selection} onSelect={setSelectedId} revealedIds={revealedIds} onReveal={handleReveal} />
       )}
     </div>
   )
