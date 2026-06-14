@@ -57,8 +57,8 @@ export default function OptionCard({ option, index, onSelect }) {
           <Figure category={category} fact={fact} className="h-full w-full" />
         </motion.div>
 
-        {/* legibility scrim now lives inside <Figure>, so it morphs in with the
-            hero (see Figure.jsx) instead of being re-applied per stage */}
+        {/* legibility scrim */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/45 to-transparent" />
 
         {/* hover ring + accent glow */}
         <div className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-1 ring-white/10 transition-all duration-500 group-hover:ring-2 group-hover:ring-white/25 group-hover:shadow-[0_40px_90px_-30px_var(--accent)]" />

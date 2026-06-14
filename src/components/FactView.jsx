@@ -34,13 +34,15 @@ export default function FactView({ category, fact, onBack, backLabel = 'Choose a
         <Figure category={category} fact={fact} kenburns className="h-full w-full" />
       </motion.div>
 
-      {/*
-        Legibility is handled inside <Figure> now: the darkening shader is baked
-        into the shared-layout element, so it is already applied while the fact is
-        presented and morphs in with the hero — rather than fading in over the
-        photo after the fact is opened. (Edge framing comes from the global
-        .vignette in index.css.)
-      */}
+      {/* Legibility scrims. These are viewport-fixed overlays kept OUTSIDE the
+          card→hero morph and rendered at full strength immediately (no fade-in),
+          so the words are legible the instant the fact opens. They must not live
+          inside the morphing <Figure>: that element grows from the small card to
+          full-bleed over the spring, so its darkening would only reach the text
+          at the bottom of the screen once the morph settles — arriving a beat
+          after the click. */}
+      <div className="pointer-events-none fixed inset-0 bg-gradient-to-t from-ink-900 via-ink-900/70 to-ink-900/10" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,transparent_40%,rgba(5,6,10,0.55)_100%)]" />
 
       {/* content */}
       <div className="relative mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-between px-5 py-8 sm:px-8 sm:py-10">
