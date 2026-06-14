@@ -19,11 +19,11 @@ day**: a short, vivid explanation paired with bespoke artwork. Curious? Hit
   shown above the card and tinted in that field's accent colour.
 - **Cinematic transitions.** Choosing a door morphs the card seamlessly into a
   full-bleed hero (shared-layout animation), with a slow Ken Burns drift.
-- **Real, on-topic photos.** Each fact is backed by a relevant, freely-licensed
-  photograph (an octopus, the Apollo bootprint, gallium crystals…), bundled
-  locally so it always loads. Abstract facts with no good photo fall back to a
-  bespoke, animated procedural SVG "scene" — so every card always looks
-  intentional. See [CREDITS.md](./CREDITS.md) for attribution.
+- **Real, on-topic photos.** Each fact is backed by a relevant photograph from
+  [Pixabay](https://pixabay.com) (an octopus, Saturn, a glassblower at work…),
+  bundled locally so it always loads. Abstract facts with no good photo fall
+  back to a bespoke, animated procedural SVG "scene" — so every card always
+  looks intentional. See [CREDITS.md](./CREDITS.md) for credits.
 - **Read more.** A focused, scrollable deep-dive sheet with key points and a
   richer explanation.
 - **Considered details:** film grain, vignette, drifting nebula backdrop,
@@ -94,14 +94,18 @@ exists it's used as the background; otherwise the fact's `scene` is rendered.
 
 ## Imagery
 
-Photos are fetched from Wikimedia Commons and bundled locally. To add or
-refresh them, edit the `MAP` in `scripts/fetch-images.mjs`, then:
+Photos are fetched from the [Pixabay API](https://pixabay.com/api/docs/) and
+bundled locally. You'll need a free Pixabay API key. To add or refresh images,
+edit the `MAP` (search queries) in `scripts/fetch-images.mjs`, then:
 
 ```bash
+export PIXABAY_API_KEY=your_key_here
 node scripts/fetch-images.mjs            # fetch all
 node scripts/fetch-images.mjs bio-octopus med-cornea   # or specific facts
 ```
 
-This downloads sized JPEGs into `src/assets/facts/` and records attribution in
-`src/data/imageCredits.json`. Regenerate [CREDITS.md](./CREDITS.md) after
-changes. Please respect each image's license (see CREDITS.md).
+This downloads the photos into `src/assets/facts/` and records credits in
+`src/data/imageCredits.json`. Images are used under the
+[Pixabay Content License](https://pixabay.com/service/license-summary/)
+(free to use, no attribution required); regenerate [CREDITS.md](./CREDITS.md)
+after changes.

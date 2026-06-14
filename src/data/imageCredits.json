@@ -1,191 +1,219 @@
 {
   "astro-venus": {
-    "title": "Venus_2_Approach_Image.jpg",
-    "artist": "NASA/Johns Hopkins University Applied Physics Laboratory/Carnegie Institution of Washington",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Venus_2_Approach_Image.jpg"
+    "author": "WikiImages",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/venus-planet-hemisphere-front-back-11587/",
+    "license": "Pixabay License",
+    "query": "venus planet"
   },
   "astro-neutron": {
-    "title": "Moving_heart_of_the_Crab_Nebula.jpg",
-    "artist": "NASA, ESA",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Moving_heart_of_the_Crab_Nebula.jpg"
+    "author": "WikiImages",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/lagoon-nebula-messier-8-ngc-6523-11143/",
+    "license": "Pixabay License",
+    "query": "nebula deep space"
   },
   "astro-stars-sand": {
-    "title": "ESO-VLT-Laser-phot-33a-07.jpg",
-    "artist": "ESO/Y. Beletsky",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:ESO-VLT-Laser-phot-33a-07.jpg"
+    "author": "zhangliams",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/milky-way-starry-sky-stars-night-4448583/",
+    "license": "Pixabay License",
+    "query": "milky way night sky"
   },
   "astro-sun-mass": {
-    "title": "The_Sun_in_white_light.jpg",
-    "artist": "Matúš Motlo",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:The_Sun_in_white_light.jpg"
+    "author": "WikiImages",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/sun-solar-flare-space-outer-space-11582/",
+    "license": "Pixabay License",
+    "query": "solar flare sun"
   },
   "astro-footprints": {
-    "title": "Apollo 11 bootprint.jpg",
-    "artist": "NASA / Buzz Aldrin",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Apollo_11_bootprint.jpg"
+    "author": "marmixer",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/moon-lunar-craters-space-moonlight-8855057/",
+    "license": "Pixabay License",
+    "query": "moon surface craters"
   },
   "astro-saturn-float": {
-    "title": "Saturn_during_Equinox.jpg",
-    "artist": "NASA / JPL / Space Science Institute",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Saturn_during_Equinox.jpg"
+    "author": "TheSpaceway",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/astronomy-space-universe-saturn-6924050/",
+    "license": "Pixabay License",
+    "query": "saturn"
   },
   "phys-sunlight": {
-    "title": "Sun_over_Lake_Hawea,_New_Zealand.jpg",
-    "artist": "Michal Klajban",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Sun_over_Lake_Hawea,_New_Zealand.jpg"
+    "author": "Michael_Pointner",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/agriculture-calm-cloud-crop-field-10314031/",
+    "license": "Pixabay License",
+    "query": "sun rays sky"
   },
   "phys-photon": {
-    "title": "Prominence_ESA423294.jpg",
-    "artist": "ESA/CESAR",
-    "license": "CC BY-SA 3.0 igo",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
-    "source": "https://commons.wikimedia.org/wiki/File:Prominence_ESA423294.jpg"
-  },
-  "phys-quantum-tunnel": {
-    "title": "Atomic_resolution_Au100.JPG",
-    "artist": "Erwinrossen",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Atomic_resolution_Au100.JPG"
-  },
-  "phys-absolute-zero": {
-    "title": "Liquidnitrogen.jpg",
-    "artist": "Cory Doctorow aka gruntzoki on Flickr",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Liquidnitrogen.jpg"
-  },
-  "bio-microbiome": {
-    "title": "E_coli_at_10000x,_original.jpg",
-    "artist": "Photo by Eric Erbe, digital colorization by Christopher Pooley, both of USDA, ARS, EMU.",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:E_coli_at_10000x,_original.jpg"
-  },
-  "bio-octopus": {
-    "title": "Octopus2.jpg",
-    "artist": "albert kok",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Octopus2.jpg"
-  },
-  "bio-tardigrade": {
-    "title": "SEM_image_of_Milnesium_tardigradum_in_active_state_-_journal.pone.0045682.g001-2_(white_background).png",
-    "artist": "Schokraie E, Warnken U, Hotz-Wagenblatt A, Grohme MA, Hengherr S, et al. (2012)",
-    "license": "CC BY 2.5",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
-    "source": "https://commons.wikimedia.org/wiki/File:SEM_image_of_Milnesium_tardigradum_in_active_state_-_journal.pone.0045682.g001-2_(white_background).png"
-  },
-  "bio-banana-dna": {
-    "title": "Bananavarieties.jpg",
-    "artist": "TimothyPilgrim",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Bananavarieties.jpg"
-  },
-  "chem-carbon": {
-    "title": "Rough_Diamond.jpg",
-    "artist": "DGPC/ADF Luísa Oliveira",
-    "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://commons.wikimedia.org/wiki/File:Rough_Diamond.jpg"
-  },
-  "bio-trees-network": {
-    "title": "Aerial_view_of_the_Amazon_Rainforest.jpg",
-    "artist": "lubasi",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_the_Amazon_Rainforest.jpg"
-  },
-  "chem-glass": {
-    "title": "Glass_bubble.jpg",
-    "artist": "KamauxKamau",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Glass_bubble.jpg"
-  },
-  "chem-ice-floats": {
-    "title": "Iceberg_in_the_Arctic_with_its_underside_exposed.jpg",
-    "artist": "AWeith",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Iceberg_in_the_Arctic_with_its_underside_exposed.jpg"
-  },
-  "chem-gallium": {
-    "title": "Gallium_bar_cracked_open_to_show_crystal_structure_with_scale_1.png",
-    "artist": "Arònel123",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Gallium_bar_cracked_open_to_show_crystal_structure_with_scale_1.png"
-  },
-  "chem-mpemba": {
-    "title": "Ice_Block,_Canal_Park,_Duluth_(32752478892).jpg",
-    "artist": "Sharon Mollerus",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Ice_Block,_Canal_Park,_Duluth_(32752478892).jpg"
-  },
-  "med-heartbeats": {
-    "title": "Heart_anterior_exterior_view.png",
-    "artist": "Jerm",
-    "license": "CC BY 2.5",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
-    "source": "https://commons.wikimedia.org/wiki/File:Heart_anterior_exterior_view.png"
-  },
-  "med-cornea": {
-    "title": "Human_eye_with_blood_vessels.jpg",
-    "artist": "ROTFLOLEB",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Human_eye_with_blood_vessels.jpg"
-  },
-  "med-bone": {
-    "title": "Left_femur_of_extinct_elephant,_Alaska,_Ice_Age_Wellcome_L0057714.jpg",
-    "artist": "Unknown",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Left_femur_of_extinct_elephant,_Alaska,_Ice_Age_Wellcome_L0057714.jpg"
-  },
-  "neuro-energy": {
-    "title": "Brain_autopsy_lateral_view.jpg",
-    "artist": "Jensflorian",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Brain_autopsy_lateral_view.jpg"
+    "author": "WikiImages",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/sun-solar-flare-space-outer-space-11582/",
+    "license": "Pixabay License",
+    "query": "sun solar corona"
   },
   "phys-timehead": {
-    "title": "Nist-f1.jpg",
-    "artist": "National Institute of Standards and Technology - Physics Laboratory: Time and Frequency Division",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Nist-f1.jpg"
+    "author": "PIRO4D",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/alarm-clock-2175382/",
+    "license": "Pixabay License",
+    "query": "clock time"
+  },
+  "phys-quantum-tunnel": {
+    "author": "geralt",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/lines-waves-explosive-christmas-2887328/",
+    "license": "Pixabay License",
+    "query": "abstract light particles"
+  },
+  "phys-absolute-zero": {
+    "author": "wal_172619",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/winter-frost-nature-texture-macro-6897046/",
+    "license": "Pixabay License",
+    "query": "frost ice crystals"
+  },
+  "phys-superfluid": {
+    "author": "PublicDomainPictures",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/splash-water-droplet-water-drop-164963/",
+    "license": "Pixabay License",
+    "query": "blue liquid drop"
+  },
+  "bio-microbiome": {
+    "author": "qimono",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/bacteria-microbiology-organism-3658992/",
+    "license": "Pixabay License",
+    "query": "bacteria microbiology"
+  },
+  "bio-octopus": {
+    "author": "12019",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/diver-octopus-grasping-sea-ocean-79948/",
+    "license": "Pixabay License",
+    "query": "octopus underwater ocean"
+  },
+  "bio-dna-length": {
+    "author": "PublicDomainPictures",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/dna-biology-science-dna-helix-163710/",
+    "license": "Pixabay License",
+    "query": "dna helix"
+  },
+  "bio-trees-network": {
+    "author": "Juncala",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/forest-fog-coniferous-forest-7406241/",
+    "license": "Pixabay License",
+    "query": "forest fog trees"
+  },
+  "bio-banana-dna": {
+    "author": "StockSnap",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/bananas-fruits-food-grocery-store-698608/",
+    "license": "Pixabay License",
+    "query": "bananas fruit"
+  },
+  "chem-glass": {
+    "author": "jwskks5786",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/glass-blowing-handmade-craft-2093969/",
+    "license": "Pixabay License",
+    "query": "glass blowing molten"
+  },
+  "chem-carbon": {
+    "author": "Pexels",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/diamond-jewelry-macro-ring-1839031/",
+    "license": "Pixabay License",
+    "query": "diamond crystal"
+  },
+  "chem-ice-floats": {
+    "author": "AlKalenski",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/iceberg-ocean-ice-snow-winter-8162195/",
+    "license": "Pixabay License",
+    "query": "iceberg"
+  },
+  "chem-gallium": {
+    "author": "Enlightening_Images",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/iron-pour-iron-pour-foundry-hot-4452869/",
+    "license": "Pixabay License",
+    "query": "molten metal foundry"
+  },
+  "chem-mpemba": {
+    "author": "1465301",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/glass-water-splash-ice-cubes-ice-2374311/",
+    "license": "Pixabay License",
+    "query": "ice cubes water"
+  },
+  "med-heartbeats": {
+    "author": "Muzamil496-",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/human-heart-heart-organ-anatomy-8274822/",
+    "license": "Pixabay License",
+    "query": "human heart anatomy"
+  },
+  "med-cornea": {
+    "author": "fotografierende",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/eye-macro-human-close-up-2769921/",
+    "license": "Pixabay License",
+    "query": "eye iris macro"
+  },
+  "med-bone": {
+    "author": "Pexels",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/skull-creepy-dark-eerie-scary-1867707/",
+    "license": "Pixabay License",
+    "query": "human skeleton"
   },
   "med-fever": {
-    "title": "Mercury_Thermometer.jpg",
-    "artist": "Anonimski",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Mercury_Thermometer.jpg"
+    "author": "Alexis",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/thermometer-temperature-instrument-70598/",
+    "license": "Pixabay License",
+    "query": "thermometer"
+  },
+  "neuro-energy": {
+    "author": "geralt",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/brain-biology-anatomy-think-2676370/",
+    "license": "Pixabay License",
+    "query": "human brain"
+  },
+  "neuro-speed": {
+    "author": "IMGMIDI",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/neurons-neuron-cell-biology-nerves-7079536/",
+    "license": "Pixabay License",
+    "query": "neuron nerve cells"
+  },
+  "neuro-gut": {
+    "author": "IMGMIDI",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/intestinal-villi-villi-7181117/",
+    "license": "Pixabay License",
+    "query": "intestine digestive anatomy"
+  },
+  "neuro-memory": {
+    "author": "cassiapowell",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/brain-mind-cartoon-psychology-5737701/",
+    "license": "Pixabay License",
+    "query": "brain abstract mind"
   },
   "neuro-tickle": {
-    "title": "Zuber_Buhler_Fritz_Tickling_The_Baby.jpg",
-    "artist": "Fritz Zuber-Buhler",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Zuber_Buhler_Fritz_Tickling_The_Baby.jpg"
+    "author": "birgl",
+    "sourceName": "Pixabay",
+    "sourceUrl": "https://pixabay.com/photos/feather-bird-feather-white-feather-7095765/",
+    "license": "Pixabay License",
+    "query": "feather macro"
   }
 }
