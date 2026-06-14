@@ -4,54 +4,82 @@ import OptionCard from './OptionCard.jsx'
 const EASE = [0.22, 0.61, 0.36, 1]
 
 /**
- * OptionsView — the daily landing: the masthead and the three doors, each
- * labelled with the science field it belongs to.
+ * OptionsView — the daily landing: a minimal masthead, a headline, and three
+ * joined panels — one per science field — that together form the "three doors."
  */
 export default function OptionsView({ selection, onSelect }) {
   return (
     <motion.div
       key="options"
-      className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-10 sm:px-8 sm:py-14"
+      className="vignette mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-8 sm:px-6 sm:py-10"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 0.985, filter: 'blur(6px)' }}
-      transition={{ duration: 0.6, ease: EASE }}
+      exit={{ opacity: 0, filter: 'blur(4px)' }}
+      transition={{ duration: 0.5, ease: EASE }}
     >
-      {/* masthead */}
+      {/* top bar */}
       <motion.header
-        className="text-center"
-        initial={{ opacity: 0, y: 18 }}
+        className="mb-8 flex items-baseline justify-between sm:mb-10"
+        initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: EASE }}
+        transition={{ duration: 0.55, ease: EASE }}
       >
-        <div className="kicker text-gradient-gold">Lumen · Daily Science</div>
-        <p className="mt-3 text-xs uppercase tracking-[0.3em] text-white/40">
+        <span className="label-cat" style={{ color: 'var(--cobalt)' }}>
+          Lumen
+        </span>
+        <span
+          className="label-cat"
+          style={{ color: 'var(--ink-muted)', letterSpacing: '0.12em' }}
+        >
           {selection.dateLabel}
-        </p>
-        <h1 className="mx-auto mt-5 max-w-3xl font-display text-4xl leading-[1.1] text-white sm:text-6xl">
-          Today, science offers you{' '}
-          <span className="text-gradient-gold">three doors.</span>
-        </h1>
-        <p className="mx-auto mt-4 max-w-xl text-base text-white/55">
-          One fascinating fact waits behind each. Choose a field to reveal its
-          fact of the day.
-        </p>
+        </span>
       </motion.header>
 
-      {/* the three doors, each labelled with its science field */}
-      <div className="mt-12 grid flex-1 grid-cols-1 content-center gap-x-6 gap-y-9 sm:mt-14 sm:grid-cols-3">
+      {/* headline */}
+      <motion.div
+        className="mb-8 sm:mb-10"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.07, duration: 0.6, ease: EASE }}
+      >
+        <h1
+          className="font-display text-[2.5rem] font-bold leading-none tracking-[-0.02em] sm:text-[3.4rem]"
+          style={{ color: 'var(--ink)' }}
+        >
+          Three doors.
+        </h1>
+        <p
+          className="mt-3 max-w-xs text-sm leading-relaxed sm:text-base"
+          style={{ color: 'var(--ink-muted)' }}
+        >
+          One fact waits behind each field. Choose to reveal it.
+        </p>
+      </motion.div>
+
+      {/* the three door panels — joined with a hair-thin separator */}
+      <div
+        className="grid min-h-[18rem] flex-1 grid-cols-1 overflow-hidden rounded-xl sm:min-h-0 sm:grid-cols-3"
+        style={{ gap: '1.5px', background: 'var(--border-subtle)' }}
+      >
         {selection.options.map((option, i) => (
-          <OptionCard key={option.fact.id} option={option} index={i} onSelect={onSelect} />
+          <OptionCard
+            key={option.fact.id}
+            option={option}
+            index={i}
+            onSelect={onSelect}
+          />
         ))}
       </div>
 
+      {/* footer */}
       <motion.p
-        className="mt-10 text-center text-xs tracking-wide text-white/30"
+        className="mt-6 text-center text-[10px] uppercase tracking-[0.16em]"
+        style={{ color: 'var(--ink-faint)' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.8 }}
+        transition={{ delay: 0.55, duration: 0.8 }}
       >
-        A new trio of discoveries arrives every day.
+        A new trio arrives every day
       </motion.p>
     </motion.div>
   )

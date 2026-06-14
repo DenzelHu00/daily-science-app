@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 /**
- * ReadMore — the "deeper dive" sheet for a fact. Slides up as a focused,
- * scrollable overlay with the key points and the longer explanation.
+ * ReadMore — the deeper-dive sheet. Slides up as a focused, scrollable overlay.
+ * Clean reading layout with numbered key points and long-form paragraphs.
  */
 export default function ReadMore({ open, fact, category, onClose }) {
   useEffect(() => {
@@ -25,11 +25,11 @@ export default function ReadMore({ open, fact, category, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.25 }}
         >
           {/* backdrop */}
           <div
-            className="absolute inset-0 bg-black/70 backdrop-blur-md"
+            className="absolute inset-0 bg-black/75 backdrop-blur-sm"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -39,52 +39,52 @@ export default function ReadMore({ open, fact, category, onClose }) {
             role="dialog"
             aria-modal="true"
             aria-label={`More about: ${fact.title}`}
-            className="glass scroll-fade relative max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl px-6 pb-10 pt-6 sm:rounded-3xl sm:px-10 sm:py-9"
-            initial={{ y: 60, opacity: 0, scale: 0.98 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: 60, opacity: 0, scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+            className="glass scroll-fade relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-t-2xl px-6 pb-10 pt-6 sm:rounded-2xl sm:px-10 sm:py-9"
+            initial={{ y: 48, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 48, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 34 }}
           >
             {/* grab handle (mobile) */}
-            <div className="mx-auto mb-6 h-1.5 w-12 rounded-full bg-white/20 sm:hidden" />
+            <div className="mx-auto mb-6 h-[3px] w-10 rounded-full bg-white/15 sm:hidden" />
 
+            {/* category */}
             <div
-              className="kicker mb-3 flex items-center gap-2"
+              className="label-cat mb-3 flex items-center gap-2"
               style={{ color: category.accentSoft }}
             >
-              <span className="text-base" aria-hidden="true">
+              <span className="text-[15px] leading-none opacity-70" aria-hidden="true">
                 {category.glyph}
               </span>
-              {category.label} · The deeper dive
+              {category.label}
             </div>
 
-            <h2 className="font-display text-3xl leading-tight text-white sm:text-4xl">
+            <h2 className="font-display text-2xl font-bold leading-tight tracking-[-0.015em] text-white sm:text-3xl">
               {fact.title}
             </h2>
 
             {/* key points */}
-            <ul className="mt-7 grid gap-3">
+            <ul className="mt-7 grid gap-4">
               {fact.keyPoints.map((point, i) => (
-                <li key={i} className="flex items-start gap-3">
+                <li key={i} className="flex items-start gap-3.5">
                   <span
-                    className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full text-xs font-semibold"
-                    style={{
-                      color: category.accentSoft,
-                      background: 'rgba(255,255,255,0.06)',
-                      border: `1px solid ${category.accent}55`,
-                    }}
+                    className="mt-0.5 text-[0.7rem] font-bold tabular-nums"
+                    style={{ color: category.accent, minWidth: '1.4rem', lineHeight: 1.6 }}
                   >
-                    {i + 1}
+                    {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-[0.95rem] leading-relaxed text-white/80">{point}</span>
+                  <span className="text-[0.93rem] leading-relaxed text-white/78">{point}</span>
                 </li>
               ))}
             </ul>
 
             {/* long-form */}
-            <div className="mt-8 space-y-4 border-t border-white/10 pt-7">
+            <div
+              className="mt-8 space-y-4 pt-7"
+              style={{ borderTop: '1px solid oklch(1 0 0 / 0.08)' }}
+            >
               {fact.readMore.split('\n\n').map((para, i) => (
-                <p key={i} className="text-[1.02rem] leading-relaxed text-white/75">
+                <p key={i} className="text-[0.98rem] leading-[1.75] text-white/72">
                   {para}
                 </p>
               ))}
@@ -93,8 +93,8 @@ export default function ReadMore({ open, fact, category, onClose }) {
             <button
               type="button"
               onClick={onClose}
-              className="mt-9 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-ink-900 transition-transform hover:scale-[1.03] active:scale-95"
-              style={{ background: category.accentSoft }}
+              className="mt-9 text-sm font-medium transition-opacity hover:opacity-60"
+              style={{ color: 'var(--ink-muted)' }}
             >
               Close
             </button>

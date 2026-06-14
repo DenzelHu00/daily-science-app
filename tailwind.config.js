@@ -4,30 +4,26 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"Space Grotesk"', 'ui-monospace', 'monospace'],
+        display: ['"Geologica"', 'system-ui', 'sans-serif'],
+        sans: ['"Geologica"', 'system-ui', 'sans-serif'],
       },
       colors: {
-        ink: {
-          900: '#05060a',
-          800: '#080a12',
-          700: '#0d1018',
-          600: '#141826',
+        canvas: {
+          950: '#0e0f12',
+          900: '#141620',
+          800: '#1a1d2c',
+          700: '#222540',
         },
-        gold: {
-          DEFAULT: '#e8c37e',
-          soft: '#f3e3bf',
+        ink: {
+          DEFAULT: '#edeef4',
+          muted: '#6a7389',
+          faint: '#3a3f58',
         },
       },
       letterSpacing: {
-        widest2: '0.35em',
+        micro: '0.18em',
       },
       keyframes: {
-        kenburns: {
-          '0%': { transform: 'scale(1.05) translate(0, 0)' },
-          '100%': { transform: 'scale(1.18) translate(-1.5%, -2%)' },
-        },
         drift: {
           '0%, 100%': { transform: 'translate(0, 0)' },
           '50%': { transform: 'translate(2%, -3%)' },
@@ -46,7 +42,6 @@ export default {
         },
       },
       animation: {
-        kenburns: 'kenburns 20s ease-out forwards',
         drift: 'drift 26s ease-in-out infinite',
         'drift-slow': 'drift 40s ease-in-out infinite',
         floaty: 'floaty 6s ease-in-out infinite',

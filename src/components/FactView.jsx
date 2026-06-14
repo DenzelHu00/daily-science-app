@@ -7,9 +7,8 @@ import { getImageCredit } from '../data/factImages.js'
 const EASE = [0.22, 0.61, 0.36, 1]
 
 /**
- * FactView — the revealed fact of the day. A full-bleed cinematic hero (the
- * morph target of the chosen card) with the short explanation anchored below,
- * plus the "read more" deep-dive sheet.
+ * FactView — the revealed fact of the day. Full-bleed cinematic hero with the
+ * explanation anchored to the lower third and a "read more" deep-dive sheet.
  */
 export default function FactView({ category, fact, onBack, backLabel = 'Choose another' }) {
   const [readMore, setReadMore] = useState(false)
@@ -24,39 +23,31 @@ export default function FactView({ category, fact, onBack, backLabel = 'Choose a
   }, [onBack, readMore])
 
   return (
-    <div className="relative min-h-screen w-full">
-      {/* full-bleed still background — no morph or pan, so the image and its
-          legibility scrims (below) are fully in place the instant the fact
-          opens, instead of animating/darkening in after the click */}
+    <div className="vignette relative min-h-screen w-full">
+      {/* full-bleed background — static so scrims are fully in place on open */}
       <div className="fixed inset-0">
         <Figure category={category} fact={fact} className="h-full w-full" />
       </div>
 
-      {/* Legibility scrims. These are viewport-fixed overlays kept OUTSIDE the
-          card→hero morph and rendered at full strength immediately (no fade-in),
-          so the words are legible the instant the fact opens. They must not live
-          inside the morphing <Figure>: that element grows from the small card to
-          full-bleed over the spring, so its darkening would only reach the text
-          at the bottom of the screen once the morph settles — arriving a beat
-          after the click. */}
-      <div className="pointer-events-none fixed inset-0 bg-gradient-to-t from-ink-900 via-ink-900/70 to-ink-900/10" />
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,transparent_40%,rgba(5,6,10,0.55)_100%)]" />
+      {/* legibility scrims — outside the morphing Figure so they're immediate */}
+      <div className="pointer-events-none fixed inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/15" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(110%_80%_at_50%_0%,transparent_40%,oklch(0_0_0/0.50)_100%)]" />
 
       {/* content */}
       <div className="relative mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-between px-5 py-8 sm:px-8 sm:py-10">
         {/* top bar */}
         <motion.div
           className="flex items-center justify-between"
-          initial={{ opacity: 0, y: -12 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.6, ease: EASE }}
+          transition={{ delay: 0.22, duration: 0.55, ease: EASE }}
         >
           <button
             type="button"
             onClick={onBack}
-            className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-md transition-colors hover:bg-white/10"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-medium text-white/70 backdrop-blur-sm transition-colors hover:bg-white/[0.10]"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
                 d="M19 12H5M11 6l-6 6 6 6"
                 stroke="currentColor"
@@ -67,31 +58,32 @@ export default function FactView({ category, fact, onBack, backLabel = 'Choose a
             </svg>
             {backLabel}
           </button>
-          <div className="kicker hidden text-white/45 sm:block">Fact of the day</div>
+
+          <span className="label-cat hidden text-white/40 sm:block">Fact of the day</span>
         </motion.div>
 
-        {/* the fact, anchored to the lower third */}
+        {/* fact — anchored to the lower third */}
         <motion.article
           className="mb-2 max-w-3xl"
-          initial={{ opacity: 0, y: 26 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.7, ease: EASE }}
+          transition={{ delay: 0.32, duration: 0.65, ease: EASE }}
         >
           <div
-            className="kicker mb-4 flex items-center gap-2"
+            className="label-cat mb-4 flex items-center gap-2"
             style={{ color: category.accentSoft }}
           >
-            <span className="text-base" aria-hidden="true">
+            <span className="text-[15px] leading-none opacity-70" aria-hidden="true">
               {category.glyph}
             </span>
             {category.label}
           </div>
 
-          <h1 className="font-display text-4xl leading-[1.08] text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)] sm:text-6xl">
+          <h1 className="font-display text-4xl font-bold leading-[1.06] tracking-[-0.02em] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.7)] sm:text-[3.8rem]">
             {fact.title}
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85 sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/82 sm:text-xl">
             {fact.fact}
           </p>
 
@@ -99,28 +91,28 @@ export default function FactView({ category, fact, onBack, backLabel = 'Choose a
             <button
               type="button"
               onClick={() => setReadMore(true)}
-              className="inline-flex items-center gap-2.5 rounded-full px-6 py-3 text-sm font-semibold text-ink-900 shadow-lg transition-transform hover:scale-[1.03] active:scale-95"
+              className="inline-flex items-center gap-2.5 rounded-full px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03] active:scale-95"
               style={{
-                background: `linear-gradient(180deg, ${category.accentSoft}, ${category.accent})`,
-                boxShadow: `0 18px 50px -18px ${category.accent}`,
+                background: category.accent,
+                boxShadow: `0 4px 20px -6px ${category.accent}90`,
               }}
             >
               Read more
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
                   d="M12 5v14M5 12l7 7 7-7"
                   stroke="currentColor"
-                  strokeWidth="1.8"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
             </button>
-            <span className="text-sm text-white/45">A deeper dive for the curious</span>
+            <span className="text-sm text-white/40">A deeper dive for the curious</span>
           </div>
 
           {credit && (
-            <p className="mt-7 text-[11px] leading-tight text-white/30">
+            <p className="mt-8 text-[10px] leading-tight text-white/28">
               Photo: {credit.author || credit.artist || 'Unknown'}
               {credit.license ? `, ${credit.license}` : ''}
               {' · '}

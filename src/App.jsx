@@ -74,7 +74,7 @@ export default function App() {
   }, [selectedId])
 
   return (
-    <div className="grain vignette relative min-h-screen overflow-x-hidden">
+    <div className="relative min-h-screen overflow-x-hidden">
       <Atmosphere />
 
       {selected ? (
