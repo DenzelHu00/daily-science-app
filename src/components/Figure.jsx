@@ -24,6 +24,8 @@ export default function Figure({ category, fact, kenburns = false, className = '
           alt=""
           aria-hidden="true"
           draggable="false"
+          loading="lazy"
+          decoding="async"
           className={`absolute inset-0 h-full w-full object-cover ${
             kenburns ? 'animate-kenburns' : ''
           }`}

@@ -11,7 +11,7 @@ const EASE = [0.22, 0.61, 0.36, 1]
  * morph target of the chosen card) with the short explanation anchored below,
  * plus the "read more" deep-dive sheet.
  */
-export default function FactView({ category, fact, onBack }) {
+export default function FactView({ category, fact, onBack, backLabel = 'Choose another' }) {
   const [readMore, setReadMore] = useState(false)
   const credit = getImageCredit(fact.id)
 
@@ -66,7 +66,7 @@ export default function FactView({ category, fact, onBack }) {
                 strokeLinejoin="round"
               />
             </svg>
-            Choose another
+            {backLabel}
           </button>
           <div className="kicker hidden text-white/45 sm:block">Fact of the day</div>
         </motion.div>

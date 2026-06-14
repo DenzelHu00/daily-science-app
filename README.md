@@ -45,6 +45,19 @@ npm run build    # production build → dist/
 npm run preview  # preview the production build
 ```
 
+## Admin mode
+
+A hidden review gallery lets you scroll through **every** fact (not just
+today's three), grouped by field, and click any card to preview exactly what a
+visitor sees. Each card is badged `photo` or `scene`.
+
+- Open it by visiting the app with `?admin` (e.g. `http://localhost:5173/?admin`),
+  or press **Shift + A** anywhere to toggle it.
+- "Exit admin" (or Shift + A again) returns to the normal daily view.
+
+It's a lightweight obscurity gate, not authentication — the facts are public
+content, so admin mode just unlocks browsing the whole corpus.
+
 ## Project structure
 
 ```
