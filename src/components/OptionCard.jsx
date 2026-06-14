@@ -6,8 +6,7 @@ const EASE = [0.22, 0.61, 0.36, 1]
 /**
  * OptionCard — one of the three daily "doors". Its own category is labelled
  * just above the card; a spoiler-free teaser sits over the category's scene.
- * The inner figure carries a shared layoutId so that, on selection, it morphs
- * seamlessly into the full-bleed fact hero.
+ * Selecting it reveals that fact's full-bleed hero.
  */
 export default function OptionCard({ option, index, onSelect }) {
   const { category, fact } = option
@@ -48,14 +47,10 @@ export default function OptionCard({ option, index, onSelect }) {
           boxShadow: '0 18px 50px -28px rgba(0,0,0,0.9)',
         }}
       >
-        {/* morphing image surface */}
-        <motion.div
-          layoutId={`fig-${fact.id}`}
-          className="absolute inset-0"
-          transition={{ type: 'spring', stiffness: 170, damping: 26 }}
-        >
+        {/* image surface */}
+        <div className="absolute inset-0">
           <Figure category={category} fact={fact} className="h-full w-full" />
-        </motion.div>
+        </div>
 
         {/* legibility scrim */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/45 to-transparent" />

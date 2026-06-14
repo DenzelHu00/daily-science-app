@@ -76,13 +76,9 @@ function AdminCard({ category, fact, onSelect }) {
       whileHover={{ y: -5 }}
       whileTap={{ scale: 0.98 }}
     >
-      <motion.div
-        layoutId={`fig-${fact.id}`}
-        className="absolute inset-0"
-        transition={{ type: 'spring', stiffness: 170, damping: 26 }}
-      >
+      <div className="absolute inset-0">
         <Figure category={category} fact={fact} className="h-full w-full" />
-      </motion.div>
+      </div>
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-transparent" />
 

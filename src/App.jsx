@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { LayoutGroup } from 'framer-motion'
 import Atmosphere from './components/Atmosphere.jsx'
 import OptionsView from './components/OptionsView.jsx'
 import AdminView from './components/AdminView.jsx'
@@ -78,21 +77,19 @@ export default function App() {
     <div className="grain vignette relative min-h-screen overflow-x-hidden">
       <Atmosphere />
 
-      <LayoutGroup>
-        {selected ? (
-          <FactView
-            key={selected.fact.id}
-            fact={selected.fact}
-            category={selected.category}
-            onBack={() => setSelectedId(null)}
-            backLabel={admin ? 'All facts' : 'Choose another'}
-          />
-        ) : admin ? (
-          <AdminView onSelect={setSelectedId} onExit={toggleAdmin} />
-        ) : (
-          <OptionsView selection={selection} onSelect={setSelectedId} />
-        )}
-      </LayoutGroup>
+      {selected ? (
+        <FactView
+          key={selected.fact.id}
+          fact={selected.fact}
+          category={selected.category}
+          onBack={() => setSelectedId(null)}
+          backLabel={admin ? 'All facts' : 'Choose another'}
+        />
+      ) : admin ? (
+        <AdminView onSelect={setSelectedId} onExit={toggleAdmin} />
+      ) : (
+        <OptionsView selection={selection} onSelect={setSelectedId} />
+      )}
     </div>
   )
 }

@@ -17,8 +17,9 @@ day**: a short, vivid explanation paired with bespoke artwork. Curious? Hit
   rotates automatically at local midnight — no backend required.
 - **Each option is labelled with its field** (astronomy, physics, biology…),
   shown above the card and tinted in that field's accent colour.
-- **Cinematic transitions.** Choosing a door morphs the card seamlessly into a
-  full-bleed hero (shared-layout animation), with a slow Ken Burns drift.
+- **Cinematic reveal.** Choosing a door opens its fact as a full-bleed hero with
+  a still, on-topic backdrop and layered legibility scrims, so the words stay
+  crisp the instant they appear — even over bright photos.
 - **Real, on-topic photos.** Each fact is backed by a relevant photograph from
   [Pixabay](https://pixabay.com) (an octopus, Saturn, a glassblower at work…),
   bundled locally so it always loads. Abstract facts with no good photo fall

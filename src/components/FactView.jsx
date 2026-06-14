@@ -25,14 +25,12 @@ export default function FactView({ category, fact, onBack, backLabel = 'Choose a
 
   return (
     <div className="relative min-h-screen w-full">
-      {/* full-bleed morphing hero */}
-      <motion.div
-        layoutId={`fig-${fact.id}`}
-        className="fixed inset-0"
-        transition={{ type: 'spring', stiffness: 170, damping: 26 }}
-      >
-        <Figure category={category} fact={fact} kenburns className="h-full w-full" />
-      </motion.div>
+      {/* full-bleed still background — no morph or pan, so the image and its
+          legibility scrims (below) are fully in place the instant the fact
+          opens, instead of animating/darkening in after the click */}
+      <div className="fixed inset-0">
+        <Figure category={category} fact={fact} className="h-full w-full" />
+      </div>
 
       {/* Legibility scrims. These are viewport-fixed overlays kept OUTSIDE the
           card→hero morph and rendered at full strength immediately (no fade-in),
