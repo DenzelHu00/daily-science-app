@@ -2,10 +2,12 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import Atmosphere from './components/Atmosphere.jsx'
 import OptionsView from './components/OptionsView.jsx'
 import AdminView from './components/AdminView.jsx'
+import BookmarksView from './components/BookmarksView.jsx'
 import FactView from './components/FactView.jsx'
 import { getDailySelection, dateKey } from './lib/daily.js'
 import { getFactById } from './data/facts.js'
 import { getCategory } from './data/categories.js'
+import { loadBookmarks, saveBookmarks } from './lib/bookmarks.js'
 
 // Admin mode is a hidden review gallery, gated behind ?admin (or #admin) and
 // toggleable with Shift+A. It isn't real authentication — it just unlocks
@@ -32,9 +34,21 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null)
   const [revealedIds, setRevealedIds] = useState(() => new Set())
   const [admin, setAdmin] = useState(readAdmin)
+  const [showBookmarks, setShowBookmarks] = useState(false)
+  const [bookmarkedIds, setBookmarkedIds] = useState(loadBookmarks)
 
   const handleReveal = useCallback((id) => {
     setRevealedIds((prev) => new Set([...prev, id]))
+  }, [])
+
+  const toggleBookmark = useCallback((id) => {
+    setBookmarkedIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      saveBookmarks(next)
+      return next
+    })
   }, [])
 
   // Refresh the daily trio automatically when the local calendar day rolls
@@ -51,12 +65,24 @@ export default function App() {
 
   const toggleAdmin = useCallback(() => {
     setSelectedId(null)
+    setShowBookmarks(false)
     setAdmin((prev) => {
       const next = !prev
       syncAdminUrl(next)
       window.scrollTo(0, 0)
       return next
     })
+  }, [])
+
+  const openBookmarks = useCallback(() => {
+    setSelectedId(null)
+    setShowBookmarks(true)
+    window.scrollTo(0, 0)
+  }, [])
+
+  const closeBookmarks = useCallback(() => {
+    setSelectedId(null)
+    setShowBookmarks(false)
   }, [])
 
   // Shift+A toggles the admin gallery from anywhere.
@@ -88,12 +114,23 @@ export default function App() {
           fact={selected.fact}
           category={selected.category}
           onBack={() => setSelectedId(null)}
-          backLabel={admin ? 'All facts' : 'Choose another'}
+          backLabel={admin ? 'All facts' : showBookmarks ? 'Saved facts' : 'Choose another'}
+          bookmarked={bookmarkedIds.has(selected.fact.id)}
+          onToggleBookmark={toggleBookmark}
         />
       ) : admin ? (
         <AdminView onSelect={setSelectedId} onExit={toggleAdmin} />
+      ) : showBookmarks ? (
+        <BookmarksView bookmarkedIds={bookmarkedIds} onSelect={setSelectedId} onExit={closeBookmarks} />
       ) : (
-        <OptionsView selection={selection} onSelect={setSelectedId} revealedIds={revealedIds} onReveal={handleReveal} />
+        <OptionsView
+          selection={selection}
+          onSelect={setSelectedId}
+          revealedIds={revealedIds}
+          onReveal={handleReveal}
+          onOpenBookmarks={openBookmarks}
+          bookmarkCount={bookmarkedIds.size}
+        />
       )}
     </div>
   )
