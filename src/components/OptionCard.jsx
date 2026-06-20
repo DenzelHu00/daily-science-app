@@ -30,6 +30,7 @@ export default function OptionCard({ option, index, onSelect, initiallyRevealed,
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.08 * index + 0.15, ease: EASE }}
+      transformTemplate={keepGpuLayer}
     >
       <motion.button
         type="button"
@@ -67,6 +68,7 @@ export default function OptionCard({ option, index, onSelect, initiallyRevealed,
           style={{ background: '#06060c', zIndex: 20 }}
           animate={phase === 'open' ? { x: '-100%' } : { x: 0 }}
           transition={{ duration: 0.62, ease: SPLIT_EASE }}
+          transformTemplate={keepGpuLayer}
           aria-hidden="true"
         />
         <motion.div
@@ -74,6 +76,7 @@ export default function OptionCard({ option, index, onSelect, initiallyRevealed,
           style={{ background: '#06060c', zIndex: 20 }}
           animate={phase === 'open' ? { x: '100%' } : { x: 0 }}
           transition={{ duration: 0.62, ease: SPLIT_EASE }}
+          transformTemplate={keepGpuLayer}
           aria-hidden="true"
         />
 
@@ -91,6 +94,7 @@ export default function OptionCard({ option, index, onSelect, initiallyRevealed,
             }}
             animate={phase === 'open' ? { opacity: 0 } : { opacity: 1 }}
             transition={{ duration: 0.45 }}
+            transformTemplate={keepGpuLayer}
           />
         </div>
 
@@ -150,6 +154,7 @@ export default function OptionCard({ option, index, onSelect, initiallyRevealed,
                   ? { duration: 0.15, ease: [0.2, 0, 0.8, 1] }
                   : { duration: 0.18, ease: EASE }
               }
+              transformTemplate={keepGpuLayer}
               aria-hidden="true"
             />
           )}
@@ -162,6 +167,7 @@ export default function OptionCard({ option, index, onSelect, initiallyRevealed,
           animate={phase === 'open' ? { opacity: 1 } : { opacity: 0 }}
           initial={{ opacity: 0 }}
           transition={{ duration: 0.35, delay: phase === 'open' ? 0.42 : 0 }}
+          transformTemplate={keepGpuLayer}
           aria-hidden="true"
         >
           <span className="label-cat">{category.label}</span>

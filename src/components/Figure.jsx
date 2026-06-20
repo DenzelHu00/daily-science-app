@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import Scene from './Scene.jsx'
 import { getFactImage } from '../data/factImages.js'
 
@@ -12,14 +12,25 @@ import { getFactImage } from '../data/factImages.js'
  * base layer, and a soft top-light / bottom-shadow keeps overlaid text legible.
  * Used both small (option cards) and full-bleed (the fact hero).
  *
- * The photo fades in on load rather than popping in once decoded — without
- * that, the swap from the gradient/scene placeholder to the loaded image
- * reads as a flicker. `priority` skips lazy-loading for images that are
+ * The photo fades in on first load rather than popping in once decoded —
+ * without that, the swap from the gradient/scene placeholder to the loaded
+ * image reads as a flicker. `priority` skips lazy-loading for images that are
  * visible immediately (the hero, the door cards).
+ *
+ * Navigating between views remounts this component, which resets `loaded`.
+ * For an already-cached photo the <img> is `complete` before React attaches
+ * `onLoad`, so that handler never fires — the image would either flash back
+ * through the gradient or stay stuck transparent every time you return to a
+ * view. The ref callback runs during commit (before paint), so cached images
+ * are marked loaded immediately and shown with no fade and no flash.
  */
 export default function Figure({ category, fact, className = '', priority = false }) {
   const photo = getFactImage(fact.id)
   const [loaded, setLoaded] = useState(false)
+
+  const handleRef = useCallback((node) => {
+    if (node?.complete) setLoaded(true)
+  }, [])
 
   return (
     <div
@@ -28,6 +39,7 @@ export default function Figure({ category, fact, className = '', priority = fals
     >
       {photo ? (
         <img
+          ref={handleRef}
           src={photo}
           alt=""
           aria-hidden="true"
