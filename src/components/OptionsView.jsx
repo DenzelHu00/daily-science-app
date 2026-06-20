@@ -7,7 +7,14 @@ const EASE = [0.22, 0.61, 0.36, 1]
  * OptionsView — the daily landing: a minimal masthead, a headline, and three
  * joined panels — one per science field — that together form the "three doors."
  */
-export default function OptionsView({ selection, onSelect, revealedIds, onReveal }) {
+export default function OptionsView({
+  selection,
+  onSelect,
+  revealedIds,
+  onReveal,
+  onOpenBookmarks,
+  bookmarkCount = 0,
+}) {
   return (
     <motion.div
       key="options"
@@ -27,12 +34,35 @@ export default function OptionsView({ selection, onSelect, revealedIds, onReveal
         <span className="label-cat" style={{ color: 'var(--cobalt)' }}>
           Lumen
         </span>
-        <span
-          className="label-cat"
-          style={{ color: 'var(--ink-muted)', letterSpacing: '0.12em' }}
-        >
-          {selection.dateLabel}
-        </span>
+        <div className="flex items-center gap-4">
+          <span
+            className="label-cat"
+            style={{ color: 'var(--ink-muted)', letterSpacing: '0.12em' }}
+          >
+            {selection.dateLabel}
+          </span>
+          <button
+            type="button"
+            onClick={onOpenBookmarks}
+            aria-label="Saved facts"
+            className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
+            style={{
+              borderColor: 'var(--border)',
+              color: 'var(--ink-muted)',
+              background: 'var(--surface)',
+            }}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M6 3.5h12a1 1 0 0 1 1 1V21l-7-4.2L5 21V4.5a1 1 0 0 1 1-1Z"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinejoin="round"
+              />
+            </svg>
+            {bookmarkCount > 0 ? bookmarkCount : 'Saved'}
+          </button>
+        </div>
       </motion.header>
 
       {/* headline */}

@@ -10,7 +10,14 @@ const EASE = [0.22, 0.61, 0.36, 1]
  * FactView — the revealed fact of the day. Full-bleed cinematic hero with the
  * explanation anchored to the lower third and a "read more" deep-dive sheet.
  */
-export default function FactView({ category, fact, onBack, backLabel = 'Choose another' }) {
+export default function FactView({
+  category,
+  fact,
+  onBack,
+  backLabel = 'Choose another',
+  bookmarked = false,
+  onToggleBookmark,
+}) {
   const [readMore, setReadMore] = useState(false)
   const credit = getImageCredit(fact.id)
 
@@ -59,7 +66,32 @@ export default function FactView({ category, fact, onBack, backLabel = 'Choose a
             {backLabel}
           </button>
 
-          <span className="label-cat hidden text-white/40 sm:block">Fact of the day</span>
+          <div className="flex items-center gap-3">
+            <span className="label-cat hidden text-white/40 sm:block">Fact of the day</span>
+            <button
+              type="button"
+              onClick={() => onToggleBookmark?.(fact.id)}
+              aria-pressed={bookmarked}
+              aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark this fact'}
+              className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white/70 backdrop-blur-sm transition-colors hover:bg-white/[0.10]"
+            >
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill={bookmarked ? 'currentColor' : 'none'}
+                aria-hidden="true"
+                style={{ color: bookmarked ? category.accentSoft : undefined }}
+              >
+                <path
+                  d="M6 3.5h12a1 1 0 0 1 1 1V21l-7-4.2L5 21V4.5a1 1 0 0 1 1-1Z"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         </motion.div>
 
         {/* fact — anchored to the lower third */}
