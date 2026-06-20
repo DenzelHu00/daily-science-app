@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Figure from './Figure.jsx'
+import { keepGpuLayer } from '../lib/motion.js'
 
 const EASE = [0.22, 0.61, 0.36, 1]
 const SPLIT_EASE = [0.9, 0, 0.1, 1]
@@ -105,6 +106,7 @@ export default function OptionCard({ option, index, onSelect, initiallyRevealed,
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6, scale: 0.94 }}
               transition={{ duration: 0.25, ease: EASE }}
+              transformTemplate={keepGpuLayer}
               aria-hidden="true"
             >
               <span

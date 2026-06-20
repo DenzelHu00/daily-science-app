@@ -39,6 +39,14 @@
     text-wrap: balance;
   }
 
+  /* Keep large display headings on a steady compositing layer so their
+     rasterization doesn't change as overlaying entrance animations promote
+     and demote GPU layers — that swap is what makes the text flicker. */
+  .font-display {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
   ::selection {
     background: oklch(0.62 0.10 230 / 0.28);
     color: #fff;

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Figure from './Figure.jsx'
 import ReadMore from './ReadMore.jsx'
 import { getImageCredit } from '../data/factImages.js'
+import { keepGpuLayer } from '../lib/motion.js'
 
 const EASE = [0.22, 0.61, 0.36, 1]
 
@@ -48,6 +49,7 @@ export default function FactView({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.22, duration: 0.55, ease: EASE }}
+          transformTemplate={keepGpuLayer}
         >
           <button
             type="button"
@@ -100,6 +102,7 @@ export default function FactView({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.32, duration: 0.65, ease: EASE }}
+          transformTemplate={keepGpuLayer}
         >
           <div
             className="label-cat mb-4 flex items-center gap-2"
