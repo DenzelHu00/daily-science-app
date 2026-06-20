@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import OptionCard from './OptionCard.jsx'
+import { keepGpuLayer } from '../lib/motion.js'
 
 const EASE = [0.22, 0.61, 0.36, 1]
 
@@ -30,6 +31,7 @@ export default function OptionsView({
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, ease: EASE }}
+        transformTemplate={keepGpuLayer}
       >
         <span className="label-cat" style={{ color: 'var(--cobalt)' }}>
           Lumen
@@ -71,6 +73,7 @@ export default function OptionsView({
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.07, duration: 0.6, ease: EASE }}
+        transformTemplate={keepGpuLayer}
       >
         <h1
           className="font-display font-black leading-[0.95] tracking-[-0.02em]"

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import Figure from './Figure.jsx'
 import { FACTS } from '../data/facts.js'
 import { getCategory } from '../data/categories.js'
+import { keepGpuLayer } from '../lib/motion.js'
 
 const EASE = [0.22, 0.61, 0.36, 1]
 
@@ -56,6 +57,7 @@ export default function BookmarksView({ bookmarkedIds, onSelect, onExit }) {
                 transition={{ duration: 0.45, ease: EASE }}
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.98 }}
+                transformTemplate={keepGpuLayer}
               >
                 <div className="absolute inset-0">
                   <Figure category={category} fact={fact} className="h-full w-full" />
