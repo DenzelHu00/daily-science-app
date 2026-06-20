@@ -8,6 +8,7 @@ import { getDailySelection, dateKey } from './lib/daily.js'
 import { getFactById } from './data/facts.js'
 import { getCategory } from './data/categories.js'
 import { loadBookmarks, saveBookmarks } from './lib/bookmarks.js'
+import { loadStreak, recordActivity } from './lib/streak.js'
 
 // Admin mode is a hidden review gallery, gated behind ?admin (or #admin) and
 // toggleable with Shift+A. It isn't real authentication — it just unlocks
@@ -36,10 +37,18 @@ export default function App() {
   const [admin, setAdmin] = useState(readAdmin)
   const [showBookmarks, setShowBookmarks] = useState(false)
   const [bookmarkedIds, setBookmarkedIds] = useState(loadBookmarks)
+  const [streak, setStreak] = useState(loadStreak)
 
   const handleReveal = useCallback((id) => {
     setRevealedIds((prev) => new Set([...prev, id]))
   }, [])
+
+  // The streak only advances once all three of today's doors have been
+  // revealed — a half-finished day shouldn't count.
+  useEffect(() => {
+    const allRevealed = selection.options.every((opt) => revealedIds.has(opt.fact.id))
+    if (allRevealed) setStreak(recordActivity())
+  }, [revealedIds, selection])
 
   const toggleBookmark = useCallback((id) => {
     setBookmarkedIds((prev) => {
@@ -130,6 +139,7 @@ export default function App() {
           onReveal={handleReveal}
           onOpenBookmarks={openBookmarks}
           bookmarkCount={bookmarkedIds.size}
+          streakCount={streak.count}
         />
       )}
     </div>
