@@ -15,6 +15,7 @@ export default function OptionsView({
   onReveal,
   onOpenBookmarks,
   bookmarkCount = 0,
+  streakCount = 0,
 }) {
   return (
     <motion.div
@@ -44,6 +45,27 @@ export default function OptionsView({
           >
             {selection.dateLabel}
           </span>
+          {streakCount > 0 && (
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium"
+              style={{
+                borderColor: 'var(--border)',
+                color: 'var(--amber)',
+                background: 'var(--surface)',
+              }}
+              aria-label={`${streakCount} day streak`}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M12 2c1 3-3 4.5-3 8a3 3 0 0 0 6 0c1.2 1 2 2.7 2 4.2A5 5 0 1 1 7 14.2C7 10.5 10.5 8.5 12 2Z"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {streakCount}
+            </span>
+          )}
           <button
             type="button"
             onClick={onOpenBookmarks}
