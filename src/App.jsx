@@ -41,8 +41,14 @@ export default function App() {
 
   const handleReveal = useCallback((id) => {
     setRevealedIds((prev) => new Set([...prev, id]))
-    setStreak(recordActivity())
   }, [])
+
+  // The streak only advances once all three of today's doors have been
+  // revealed — a half-finished day shouldn't count.
+  useEffect(() => {
+    const allRevealed = selection.options.every((opt) => revealedIds.has(opt.fact.id))
+    if (allRevealed) setStreak(recordActivity())
+  }, [revealedIds, selection])
 
   const toggleBookmark = useCallback((id) => {
     setBookmarkedIds((prev) => {
