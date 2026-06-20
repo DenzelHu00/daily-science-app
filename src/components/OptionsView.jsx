@@ -24,6 +24,7 @@ export default function OptionsView({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, filter: 'blur(4px)' }}
       transition={{ duration: 0.5, ease: EASE }}
+      transformTemplate={keepGpuLayer}
     >
       {/* top bar */}
       <motion.header
@@ -116,6 +117,7 @@ export default function OptionsView({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.55, duration: 0.8 }}
+        transformTemplate={keepGpuLayer}
       >
         A new trio arrives every day
       </motion.p>
