@@ -33,7 +33,7 @@ export default function FactView({
     <div className="vignette relative min-h-screen w-full">
       {/* full-bleed background — static so scrims are fully in place on open */}
       <div className="fixed inset-0">
-        <Figure category={category} fact={fact} className="h-full w-full" />
+        <Figure category={category} fact={fact} className="h-full w-full" priority />
       </div>
 
       {/* legibility scrims — outside the morphing Figure so they're immediate */}

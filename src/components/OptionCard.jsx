@@ -40,7 +40,7 @@ export default function OptionCard({ option, index, onSelect, initiallyRevealed,
       >
         {/* ── Image + scrims ────────────────────────────────────── */}
         <div className="absolute inset-0">
-          <Figure category={category} fact={fact} className="h-full w-full" />
+          <Figure category={category} fact={fact} className="h-full w-full" priority />
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90" />
 
