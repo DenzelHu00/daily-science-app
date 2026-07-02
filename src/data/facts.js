@@ -102,6 +102,51 @@ export const FACTS = [
     readMore:
       "Saturn's low density is a clue to what gas giants are made of. Beneath its pale gold cloud bands, pressure mounts until hydrogen behaves like a liquid metal deep inside, possibly wrapped around a small rocky-icy core. There is no boundary where 'atmosphere' becomes 'ground' — you would simply sink into ever-thicker gas.\n\nThe famous rings, by contrast, are almost absurdly delicate — only tens of metres thick in places while spanning hundreds of thousands of kilometres, and made of countless chunks of ice and rock. So the one planet that could float in water is wrapped in the most fragile grand structure in the Solar System.",
   },
+  {
+    id: 'astro-day-length',
+    category: 'astronomy',
+    teaser: "The 24-hour clock you live by didn't always tell the truth.",
+    title: "Earth's Days Are Getting Longer",
+    fact: "Earth's rotation is gradually slowing as the Moon's gravity drags on the oceans, tugging energy away from our spin. Roughly 1.4 billion years ago a single day lasted about 19 hours, and dinosaurs likely experienced days closer to 23 hours than 24. Today the slowdown adds only about 1.8 milliseconds per century, but multiplied across deep time it reshapes what a 'day' even means.",
+    scene: 'orbits',
+    keyPoints: [
+      'Days lengthen by ~1.8 ms per century',
+      '1.4 billion years ago: ~19-hour days',
+      'Caused by lunar tidal drag on the oceans',
+    ],
+    readMore:
+      "Scientists read this slowdown in an unlikely archive: the growth rings of ancient corals and stromatolites, whose daily and yearly banding preserves a fossil record of how many days once made up a year. Counting those bands shows a steady increase in day length stretching back hundreds of millions of years.\n\nThe Moon is the culprit and, in a sense, the victim — as it slows Earth's spin it steals angular momentum, and that energy pushes the Moon itself into a slightly wider orbit, receding by about 3.8 centimetres a year. Given enough time, Earth's day and the Moon's orbit will inch toward matching each other's rhythm, much as has already happened to the Moon, which keeps the same face turned toward us.",
+  },
+  {
+    id: 'astro-diamond-planet',
+    category: 'astronomy',
+    teaser: 'One distant world may be worth more than every fortune ever made.',
+    title: "There's a Planet That May Be Made Largely of Diamond",
+    fact: "Roughly 40 light-years away orbits 55 Cancri e, a rocky 'super-Earth' whose carbon-rich composition may crystallise under pressure into vast seams of diamond. Some estimates suggest a third of its mass could be carbon, squeezed by heat and pressure until it hardens into gemstone. It's a stark reminder that chemistry, not rarity, is what actually makes a diamond a diamond.",
+    scene: 'starfield',
+    keyPoints: [
+      'Orbits a star ~40 light-years away',
+      'Possibly rich in carbon rather than silicate rock',
+      'Extreme pressure could crystallise carbon into diamond',
+    ],
+    readMore:
+      "55 Cancri e was first flagged as unusual because its density didn't match a typical rocky planet built from the same silicate minerals as Earth. Researchers proposed that if the system's carbon-to-oxygen ratio is high enough, the planet could have formed with abundant carbon instead of oxygen-rich rock, changing its entire internal chemistry.\n\nThe idea remains debated — later observations suggested a more ordinary, oxygen-rich interior is also possible, and the planet's blistering dayside temperature, hot enough to melt metal, complicates any simple story. Still, 'diamond planet' remains one of the more delightful hypotheses in exoplanet science, a reminder that a gemstone on Earth might just be commonplace geology somewhere else.",
+  },
+  {
+    id: 'astro-titan-rain',
+    category: 'astronomy',
+    teaser: 'Somewhere out there, an alien coastline is misted in a fuel we burn.',
+    title: 'One Moon Has Rivers, Lakes and Rain — of Methane',
+    fact: "Saturn's moon Titan is the only place besides Earth known to have stable liquid on its surface — but instead of water, its rivers, lakes and seas are filled with liquid methane and ethane. Clouds of the same hydrocarbons drift through its hazy orange sky and occasionally rain down, carving channels into an icy bedrock. It's an entire weather system running on chemistry that, on Earth, we keep in fuel tanks.",
+    scene: 'waves',
+    keyPoints: [
+      'Surface temperature: about −179°C',
+      'Lakes and seas of liquid methane and ethane',
+      "Only other body with a stable liquid cycle like Earth's",
+    ],
+    readMore:
+      "The Cassini-Huygens mission mapped Titan's northern hemisphere and found seas larger than the Great Lakes, along with river networks strikingly similar in shape to those on Earth — evidence that the same physics of erosion and flow applies, just with a different liquid entirely. Titan's cycle of evaporation, cloud formation and rainfall mirrors Earth's water cycle so closely that planetary scientists call it a genuine analogue, just chilled to nearly −180°C.\n\nBeneath the icy crust, some models suggest a subsurface ocean of liquid water may exist too, kept from freezing by internal heat and dissolved salts. That would make Titan a place with two entirely different kinds of ocean stacked on top of each other — one of water hidden below, one of hydrocarbons pooling above.",
+  },
 
   // ───────────────────────────── PHYSICS ─────────────────────────────
   {
@@ -193,6 +238,51 @@ export const FACTS = [
     ],
     readMore:
       "Superfluidity is what happens when quantum mechanics takes over an entire liquid at once. Below the so-called lambda point, a large fraction of the helium atoms drop into the same quantum state and move in perfect lockstep, behaving as a single coherent substance rather than countless jostling particles.\n\nWith no viscosity to stop it, the liquid forms a film just tens of atoms thick that flows up the container walls and drips off the bottom — the famous 'Rollin film.' Set it swirling in a ring and the current will keep circulating essentially forever, a frictionless flow that simply never winds down.",
+  },
+  {
+    id: 'phys-lightning',
+    category: 'physics',
+    teaser: 'For an instant, the sky gets hotter than the star that lights it.',
+    title: 'Lightning Is Hotter Than the Surface of the Sun',
+    fact: "A bolt of lightning briefly heats the air around it to roughly 30,000 kelvin — about five times hotter than the Sun's visible surface, which sits at around 5,500°C. That superheated air expands explosively, creating the shockwave we hear as thunder. The flash lasts only millionths of a second, but for that instant the sky is the hottest thing for miles.",
+    scene: 'radiance',
+    keyPoints: [
+      'Lightning channel: ~30,000 K',
+      "Sun's surface: ~5,500°C",
+      'Rapid air expansion produces thunder',
+    ],
+    readMore:
+      "Lightning forms as electrical charge builds up inside storm clouds until it forces a path through the air, which is normally an excellent insulator. When the bolt strikes, it ionises the air along its path in a channel often no wider than a couple of centimetres, briefly transforming it into a plasma hotter than anything found naturally on Earth's surface.\n\nThat heat is so sudden that the surrounding air has no time to expand gradually — it detonates outward at supersonic speed, and the resulting shockwave decays into the rolling boom of thunder. Because light travels far faster than sound, counting the seconds between a flash and its thunder gives a rough measure of the storm's distance: about one kilometre for every three seconds.",
+  },
+  {
+    id: 'phys-vacuum-silence',
+    category: 'physics',
+    teaser: 'No matter how loud the explosion, nobody out there would hear a thing.',
+    title: 'Space Is Completely Silent',
+    fact: "Sound is a vibration that needs a medium — air, water, or some other matter — to travel through. Space is a near-perfect vacuum, so even a star exploding nearby would produce no sound a human could hear. Every explosion in a sci-fi film's space battle is, physically, dead silent.",
+    scene: 'starfield',
+    keyPoints: [
+      'Sound needs molecules to carry vibrations',
+      'Space has almost no matter to vibrate',
+      'Even supernovae make no audible sound',
+    ],
+    readMore:
+      "On Earth, sound travels as a pressure wave, with molecules of air bumping into their neighbours to pass the vibration along. Remove the air — as in a vacuum chamber, or the vast near-emptiness of interstellar space — and there is nothing left to jostle, so the wave simply cannot propagate.\n\nThis is why astronauts on a spacewalk must communicate by radio rather than shouting, even standing right next to each other. NASA has famously released 'sounds' of black holes and nebulae, but these are actually pressure or electromagnetic data converted into audible tones for human ears — a translation of the cosmos, not a recording of it.",
+  },
+  {
+    id: 'phys-neutrinos',
+    category: 'physics',
+    teaser: "Something invisible is streaming through your body right now, and you'll never feel it.",
+    title: 'Trillions of Ghost Particles Pass Through You Every Second',
+    fact: "Neutrinos are subatomic particles produced by the Sun in staggering numbers, and roughly 100 trillion of them pass through your body every single second. They interact with matter so rarely that the vast majority sail straight through the entire Earth without hitting a single atom. Detecting even a handful requires building enormous tanks buried deep underground.",
+    scene: 'lattice',
+    keyPoints: [
+      '~100 trillion solar neutrinos pass through you per second',
+      'Almost never interact with ordinary matter',
+      'Detectors use giant underground tanks to catch rare collisions',
+    ],
+    readMore:
+      "Neutrinos are produced whenever nuclear fusion happens, which means the Sun floods the Solar System with them constantly. Because neutrinos barely interact with anything, they stream outward from the Sun's core in about eight minutes — far faster than the light created in the same reactions, which can take tens of thousands of years to fight its way out.\n\nTo catch the occasional neutrino colliding with an atom, physicists build detectors like Super-Kamiokande in Japan: a tank holding 50,000 tonnes of ultra-pure water, buried a kilometre underground to shield it from other radiation. Even then, only a tiny fraction of the neutrinos passing through are ever registered — most continue on, utterly indifferent to the matter they pass through.",
   },
 
   // ───────────────────────────── BIOLOGY ─────────────────────────────
@@ -286,6 +376,36 @@ export const FACTS = [
     readMore:
       "The banana statistic sounds absurd until you remember what genes actually do. Most are not about being a person or a plant but about the fundamentals of being a living cell — turning food into energy, repairing DNA, assembling proteins. Those core processes were perfected in our shared single-celled ancestors and have barely changed since.\n\nWe share around 60% of our genes with fruit flies and about 98–99% with chimpanzees, a ladder of kinship that traces the whole tree of life back to a single root. Every living thing you have ever seen is, quite literally, a relative writing variations on the same ancient code.",
   },
+  {
+    id: 'bio-immortal-jellyfish',
+    category: 'biology',
+    teaser: 'One creature in the ocean has found a loophole around growing old.',
+    title: 'One Jellyfish Can Reverse Its Own Ageing',
+    fact: "Turritopsis dohrnii, a jellyfish barely the size of a fingernail, can respond to injury, starvation or old age by reverting its adult cells back into an earlier juvenile stage. In effect, it restarts its own life cycle instead of dying, a process no other known animal can fully perform. Biologists have nicknamed it the 'immortal jellyfish' — not because it can't be killed, but because ageing itself doesn't seem to be a dead end for it.",
+    scene: 'cells',
+    keyPoints: [
+      'Can revert adult cells to a juvenile polyp stage',
+      "Nicknamed the 'immortal jellyfish'",
+      'Still dies from predators or disease',
+    ],
+    readMore:
+      "The transformation relies on a process called transdifferentiation, where specialised adult cells — like those in muscle or nerve tissue — convert directly into a different cell type without going through an embryo-like reset first. The jellyfish essentially disassembles part of its adult body and reassembles it into the polyp stage it started life as, ready to mature all over again.\n\nThis doesn't make the species invincible: it can still be eaten, diseased, or killed by changing ocean conditions like any other animal. But it has made Turritopsis dohrnii a serious subject of ageing research, as scientists try to understand whether the cellular tricks it uses could ever inform how human tissue repairs and regenerates.",
+  },
+  {
+    id: 'bio-naked-mole-rat',
+    category: 'biology',
+    teaser: 'A wrinkled, nearly blind rodent may be quietly rewriting the rules of biology.',
+    title: 'One Mammal Almost Never Gets Cancer',
+    fact: "Naked mole rats are small, hairless rodents that live in underground colonies almost like ants or bees — and they appear to be remarkably resistant to cancer. Their cells produce an unusually heavy, sugary molecule that seems to stop tumours from growing out of control. They also barely feel certain kinds of pain and can survive nearly 20 minutes without oxygen by switching their metabolism to run on fructose.",
+    scene: 'network',
+    keyPoints: [
+      'Almost never develop tumours',
+      'Live in eusocial colonies, unusual for mammals',
+      'Can survive ~18 minutes with no oxygen',
+    ],
+    readMore:
+      "Most mammal cells stop dividing once they get too crowded, a safeguard against runaway growth. Naked mole rat cells enforce this rule far more strictly than ours, partly thanks to a high-molecular-weight form of hyaluronan — a sugary molecule that makes their tissue unusually gooey and appears to trigger cells to stop multiplying at the first sign of overcrowding.\n\nTheir tolerance for low oxygen is just as strange: when oxygen runs short, their cells switch from burning glucose to burning fructose, a metabolic trick otherwise seen mainly in plants. Combined with lifespans of up to 30 years — extraordinary for a rodent that size — naked mole rats have become one of biology's favourite case studies in defying the usual rules of ageing and disease.",
+  },
 
   // ───────────────────────────── CHEMISTRY ─────────────────────────────
   {
@@ -362,6 +482,36 @@ export const FACTS = [
     ],
     readMore:
       "The Mpemba effect is a reminder that even everyday physics still holds surprises. Aristotle noted it more than two thousand years ago, but it took a curious schoolboy in 1963 to drag it back into science after his teacher dismissed the idea as impossible.\n\nProposed explanations include faster evaporation shrinking the volume of hot water, convection currents redistributing heat, dissolved gases escaping, and subtle effects in how water's hydrogen bonds store energy. Frustratingly, the effect is hard to reproduce reliably, and some researchers argue it is not a single phenomenon at all — leaving a genuine open question chilling in your kitchen.",
+  },
+  {
+    id: 'chem-aerogel',
+    category: 'chemistry',
+    teaser: "Some materials are so light they look like they shouldn't exist at all.",
+    title: "The World's Lightest Solid Is Basically Frozen Smoke",
+    fact: "Aerogel is a solid made by removing all the liquid from a gel and replacing it with air, leaving a rigid structure that is up to 99.8% empty space. It's so light that a block of it can rest on a flower without crushing the petals, earning nicknames like 'frozen smoke' and 'solid air.' Despite its ghostly appearance, aerogel is a superb insulator, capable of blocking a blowtorch's heat with a layer only a centimetre thick.",
+    scene: 'lattice',
+    keyPoints: [
+      'Up to 99.8% air by volume',
+      'One of the lightest solids ever made',
+      'Extremely effective heat insulator',
+    ],
+    readMore:
+      "Aerogels are made by growing a gel — often from silica — and then carefully replacing its liquid component with gas through a process called supercritical drying, which avoids the surface tension that would otherwise collapse the delicate structure as it dries. What's left is a tangled, nanoporous scaffold that is almost entirely empty, yet holds together as a solid.\n\nNASA has used silica aerogel to capture comet dust particles travelling at hypervelocity without vaporising them, and to insulate the wheels of Mars rovers against brutal overnight cold. Its ghostly blue tint comes from the same kind of light scattering that makes the sky blue — Rayleigh scattering off structures far smaller than the wavelength of visible light.",
+  },
+  {
+    id: 'chem-salt',
+    category: 'chemistry',
+    teaser: 'Something you sprinkle on your dinner is built from two things that would kill you.',
+    title: 'Table Salt Is Made From Two Deadly Elements',
+    fact: "Ordinary table salt is sodium chloride — a compound of sodium, a metal so reactive it explodes on contact with water, and chlorine, a toxic gas used as a chemical weapon in the First World War. Combined, these two hazardous elements form a stable, harmless crystal that's essential to human life. It's a vivid example of how a compound's properties can bear no resemblance to the elements that built it.",
+    scene: 'hexagons',
+    keyPoints: [
+      'Sodium metal reacts violently with water',
+      'Chlorine gas is toxic on its own',
+      'Together they form stable, life-sustaining salt',
+    ],
+    readMore:
+      "The reason the combination is so different from its parts lies in how the two elements bond. Sodium desperately wants to give away a single electron, and chlorine desperately wants to accept one; when they react, sodium becomes a positively charged ion and chlorine a negatively charged one, locking together in a rigid ionic lattice. That new arrangement is far more chemically stable than either element was on its own, which is exactly why it no longer behaves like a metal or a gas.\n\nThis same logic explains countless everyday materials: chemical compounds are not averages of their ingredients but entirely new substances defined by how their atoms interact. It's part of why chemistry can feel almost magical — mixing two poisons can, under the right rules, produce something you eat by the spoonful.",
   },
 
   // ───────────────────────────── MEDICINE ─────────────────────────────
@@ -440,6 +590,51 @@ export const FACTS = [
     readMore:
       "For most of history fever was seen as the disease itself; we now know it is often part of the cure. When immune cells detect an invader they release signals telling the hypothalamus to reset the body's thermostat higher, which is why you shiver to generate heat as a fever climbs.\n\nThe elevated temperature speeds up the production and movement of infection-fighting cells while hampering temperature-sensitive microbes. This is why doctors increasingly advise letting a mild fever run its course — though very high or prolonged fevers, especially in the very young, still deserve real attention.",
   },
+  {
+    id: 'med-eye-lens',
+    category: 'medicine',
+    teaser: "A few cells in your body have never once been replaced since before you were born.",
+    title: 'Some Cells in Your Eyes Are as Old as You Are',
+    fact: "Most cells in your body are swapped out and renewed on a rolling basis, but the core fibre cells of your eye's lens are a strange exception — they form before birth and are never replaced. Instead of dying off and regenerating, they simply lose their nucleus and internal organelles, becoming stripped-down, transparent structures stacked in perfect layers. The very centre of your lens is, cellularly speaking, the same age as you are.",
+    scene: 'iris',
+    keyPoints: [
+      'Central lens fibres form before birth',
+      "They're never replaced afterward",
+      'Loss of internal organelles keeps them transparent',
+    ],
+    readMore:
+      "The lens has to stay perfectly clear to focus light, and living cells full of organelles would scatter that light and blur vision — much like why the cornea has no blood vessels. So during development, lens cells methodically destroy their own nucleus, mitochondria and other internal machinery, becoming little more than ordered, protein-packed shells.\n\nNew lens fibre cells are still added at the edges throughout life, pushing the original cells ever deeper toward the centre, which is why the very core of an elderly person's lens is developmentally the oldest tissue in their entire body. Over decades those ancient proteins slowly stiffen and yellow, which is a major reason reading glasses and cataracts become more common with age.",
+  },
+  {
+    id: 'med-baby-bones',
+    category: 'medicine',
+    teaser: 'You have fewer parts now than you did on the day you were born.',
+    title: 'Babies Are Born With More Bones Than Adults',
+    fact: "A newborn baby has around 300 bones, but an adult ends up with only 206. The difference isn't lost bone — it's fusion: many bones that start out as separate pieces of cartilage or bone gradually knit together as a child grows, especially in the skull, spine and pelvis. It's one of the few times in life where 'more parts' actually means 'less finished.'",
+    scene: 'ring-pulse',
+    keyPoints: [
+      'Newborns: ~300 bones',
+      'Adults: 206 bones',
+      'Separate pieces fuse together during growth',
+    ],
+    readMore:
+      "Many of a newborn's 'extra' bones are really unfused sections of what will become a single adult bone — the skull, for instance, is made of separate plates connected by soft, flexible joints called fontanelles, which allow the head to compress slightly during birth and leave room for rapid brain growth afterward. Those plates don't fully fuse until well into childhood.\n\nSimilarly, the sacrum at the base of the spine starts as five separate vertebrae that fuse into one solid bone by early adulthood, and the pelvis begins as three separate bones on each side. This gradual fusion is part of why paediatric fractures often heal differently from adult ones, and why doctors can estimate a child's age surprisingly precisely just from an X-ray of which bones have joined and which haven't.",
+  },
+  {
+    id: 'med-goosebumps',
+    category: 'medicine',
+    teaser: 'Your skin still tries to do something your body can no longer manage.',
+    title: 'Goosebumps Are a Reflex From Fur You No Longer Have',
+    fact: "When you're cold or startled, tiny muscles at the base of each hair follicle contract, pulling the hair upright and leaving the bumpy skin we call goosebumps. In a furrier ancestor, raised hair trapped a thicker layer of insulating air, or puffed up the animal's coat to look bigger and more threatening. Humans still run the same reflex, even though our comparatively sparse body hair means it accomplishes almost nothing anymore.",
+    scene: 'ring-pulse',
+    keyPoints: [
+      'Caused by tiny muscles called arrector pili',
+      'Once trapped heat or made animals look bigger',
+      'Still triggered by cold, fear or strong emotion',
+    ],
+    readMore:
+      "The reflex is controlled by the sympathetic nervous system, the same fight-or-flight circuitry that quickens your heartbeat and dilates your pupils, which is why goosebumps can appear during a scary moment or a piece of music just as easily as in the cold. In a fur-covered ancestor this had a real payoff: raised hair created extra insulating air pockets in freezing weather, and puffed up an animal's silhouette when it needed to look larger to a rival or predator.\n\nWith human body hair reduced to a fine, mostly useless covering, none of that works anymore — the reflex is a genuine evolutionary leftover, a bit like an appendix for your skin. It persists simply because the underlying nerve pathway never stopped being useful for the emotional alertness part of the response, even after the fur it once managed was long gone.",
+  },
 
   // ─────────────────────────── NEUROSCIENCE ───────────────────────────
   {
@@ -516,6 +711,36 @@ export const FACTS = [
     ],
     readMore:
       "The reason you can't tickle yourself opens a window onto how brains work in general. To move smoothly, your brain constantly predicts the sensory consequences of its own actions and subtracts them, so it can tell the difference between the world acting on you and you acting on the world.\n\nA self-tickle is predicted and cancelled; another person's touch is unpredictable and slips straight through the filter. This same predictive machinery, when it misfires, may underlie symptoms in conditions like schizophrenia, where self-generated thoughts or movements can start to feel as though they come from somewhere outside.",
+  },
+  {
+    id: 'neuro-brain-pain',
+    category: 'neuroscience',
+    teaser: 'The organ in charge of every ache you have ever felt cannot feel one itself.',
+    title: 'Your Brain Cannot Feel Pain',
+    fact: "Brain tissue itself contains no pain receptors, so the brain cannot feel pain directly — even though it's the organ that interprets every painful signal from the rest of your body. This is why neurosurgeons can operate on a fully conscious patient, probing brain tissue while the patient talks, with only local anaesthetic needed for the scalp and skull. The headaches you do get come from surrounding structures like blood vessels, muscles and the membranes covering the brain, not the brain itself.",
+    scene: 'network',
+    keyPoints: [
+      'Brain tissue has no pain receptors',
+      'Awake brain surgery is possible because of this',
+      'Headaches originate in vessels, muscles or membranes, not the brain',
+    ],
+    readMore:
+      "'Awake craniotomy' surgery takes direct advantage of this fact: after numbing the scalp and skull, surgeons can operate on a fully conscious patient, using gentle electrical stimulation to map out which areas control speech or movement before removing a tumour, all while chatting with the patient to confirm nothing critical is being damaged.\n\nWhat actually hurts during a headache or migraine is the tissue around the brain — swollen blood vessels, tense scalp and neck muscles, or irritation of the meninges, the protective membranes wrapping the brain, all of which are richly supplied with pain receptors the brain itself lacks. The organ that constructs your entire experience of pain is, in that narrow anatomical sense, numb to it.",
+  },
+  {
+    id: 'neuro-blind-spot',
+    category: 'neuroscience',
+    teaser: "Right now, there's a hole in your vision that your brain is quietly hiding from you.",
+    title: 'You Have a Blind Spot You Never Notice',
+    fact: "Where the optic nerve exits each eye, there are no light-sensing cells at all, creating a small blind spot in your field of view. You never notice it because your brain fills the gap using surrounding visual information and data from your other eye, essentially painting over the hole in real time. The blind spot is there every waking moment — you simply can't see that it's missing.",
+    scene: 'iris',
+    keyPoints: [
+      "Caused by the optic nerve's exit point on the retina",
+      'Present in both eyes, in slightly different spots',
+      'The brain fills the gap using nearby visual data',
+    ],
+    readMore:
+      "You can find your own blind spot with a simple trick: close one eye, stare at a fixed point, and slowly move a small object off to the side at the right distance — at some point it will simply vanish, even though nothing is physically blocking it. With both eyes open the effect disappears entirely, since each eye's blind spot sits in a different part of the visual field and covers for the other.\n\nThe brain's ability to 'fill in' the missing patch — using colour, texture and pattern from the surrounding scene — is a striking example of vision being an active construction rather than a passive recording. It's the same predictive machinery that lets you perceive a complete, continuous world despite retinas that are, quite literally, punctured with a hole you'll never consciously see.",
   },
 ]
 
